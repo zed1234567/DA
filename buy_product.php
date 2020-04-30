@@ -12,16 +12,47 @@
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
 </head>
 <body>
+	<div class="container-fluid">
 
-	<?php
-		if (!empty($_SESSION['shopping_cart'])) {
-			$_SESSION['cart_count'] = count(array_keys($_SESSION['shopping_cart']));
-			echo $_SESSION['cart_count'] ;
-			foreach( $_SESSION['shopping_cart'] as $key=>$value){
-				echo $key;
+	<?php include "nav_index.php";?>
+
+		<div style="margin-top: 90px">
+			<?php
+				if (!empty($_SESSION['shopping_cart'])) {
+				?>
+				<div class="row">
+					<table class="table table-striped text-center">
+						<tr>
+							<th>TenHH</th>
+							<th>Gia</th>
+							<th>So Luong</th>
+							<th>Hinh</th>
+							<th></th>
+						</tr>
+						<?php
+						foreach($_SESSION['shopping_cart'] as $key => $value){
+							echo "<tr>";
+							echo "<td>".$value['name']."</td>";
+							echo "<td>".$value['price']."</td>";
+							echo "<td>".$value['quantity']."</td>";
+							echo "<td><img src='Resoures/".$value['img']."' height='100px' width='100px'></td>" ;
+							echo "<td>"."</td>";
+							echo "</tr>";
+						}
+					?>	
+					</table>
+				</div>
+					<div class="row justify-content-end">
+						<button class="btn btn-danger">
+							Dat Hang
+						</button>
+					</div>
+
+			<?php	
 			}
-		}
-	?>
+			?>
+		</div>
+	</div>
 	
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

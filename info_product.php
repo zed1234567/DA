@@ -16,7 +16,6 @@
 		<!-- NAV -->
 		<?php include "nav_index.php"?>
 		<!-- END-NAV -->
-		
 			<?php
 				if(isset($_GET['id'])){
 					$id_product = mysqli_real_escape_string($connect,$_GET['id']);
@@ -117,14 +116,15 @@
 			
 				if (empty($_SESSION['shopping_cart'])) {
 					$_SESSION['shopping_cart'] = $cart_array;
+					$_SESSION['message']="Da them vao gio hang!";
 					
 				}else{
 					$array_key = array_keys($_SESSION['shopping_cart']);
 					if(in_array($id_product,$array_key)){
-						echo "Da Co";
+						$_SESSION['message']="Da co trong gio hang!";
 					}else{
 						$_SESSION['shopping_cart'] = array_merge($_SESSION['shopping_cart'],$cart_array);
-						echo "da them";
+						$_SESSION['message']="Da them vao gio hang!";
 					}
 					
 				}
