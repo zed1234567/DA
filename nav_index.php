@@ -5,7 +5,7 @@
 				
 				<form class="form-inline mr-auto" action="search.php" method="post">
 					<div class="input-group">
-						<input type="text" class="form-control col-sm" name="input_search" placeholder="Search something..." required size="40px">
+						<input type="text" class="form-control" name="input_search" placeholder="Search something..." required autocomplete="off" size="25">
 						<div class="input-group-append">
 							<button type="submit" name="search" class="btn btn-success"><i class="fas fa-search"></i></button>
 						</div>
@@ -58,7 +58,7 @@
 								}else{
 
 							?>
-								<button type="button" class="btn " id="btn-login" data-target="#myModal" data-toggle="modal"><i class="far fa-user"></i></button>
+								<button type="button" class="btn" id="btn-login" data-target="#myModal" data-toggle="modal"><i class="far fa-user"></i></button>
 								<div class="modal" id="myModal">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -75,7 +75,7 @@
 																<span class="input-group-text"><i class="fa fa-paper-plane"></i></span>
 															</div>
 									
-															<input type="email" required name="Gmail" class="form-control" placeholder="Gmail">
+															<input type="email" required name="Gmail" class="form-control" autocomplete="off" placeholder="Gmail">
 														</div>
 													</div>
 													<div class="form-group">
@@ -88,9 +88,9 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<button type="submit" name="Login" class="btn btn-primary btn-block btn-lg" style="border-radius: 10px">Dang Nhap</button>
+														<button type="submit" name="Login" class="btn btn-primary btn-block btn-lg" style="border-radius: 10px">Đăng Nhập</button>
 													</div>
-													<div class="text-center">Do you have account? <a href="Resoures/php/signup_form.php">Sign in</a></div>
+													<div class="text-center">Bạn chưa có tài khoản? <a href="Resoures/php/signup_form.php">Đăng ký</a></div>
 												</form>
 	  										</div>
 										    <div class="modal-footer">

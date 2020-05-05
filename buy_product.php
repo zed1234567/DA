@@ -21,37 +21,43 @@
 				if (!empty($_SESSION['shopping_cart'])) {
 				?>
 				<div class="row">
-					<table class="table table-striped text-center">
-						<tr>
-							<th>TenHH</th>
-							<th>Gia</th>
-							<th>So Luong</th>
-							<th>Hinh</th>
-							<th></th>
-						</tr>
-						<?php
-						foreach($_SESSION['shopping_cart'] as $key => $value){
-							echo "<tr>";
-							echo "<td>".$value['name']."</td>";
-							echo "<td>".$value['price']."</td>";
-							echo "<td>".$value['quantity']."</td>";
-							echo "<td><img src='Resoures/".$value['img']."' height='100px' width='100px'></td>" ;
-							echo "<td>"."</td>";
-							echo "</tr>";
-						}
-					?>	
-					</table>
-				</div>
-					<div class="row justify-content-end">
-						<button class="btn btn-danger">
-							Dat Hang
-						</button>
+					
+					<div class="col-8">
+						<table class="table table-responsive-md text-center">
+							<tr>
+								<th></th>
+								<th>Sản Phẩm</th>
+								<th>Giá</th>
+								<th>Số Lượng</th>
+								<th></th>
+							</tr>
+							<?php
+							foreach($_SESSION['shopping_cart'] as $key => $value){
+								echo "<tr>";
+								echo "<td><img src='Resoures/".$value['img']."' height='100px' width='100px'></td>" ;
+								echo "<td>".$value['name']."</td>";
+								echo "<td>".$value['price']."</td>";
+								echo "<td>".$value['quantity']."</td>";
+								echo "<td>".'<i class="fas fa-times"></i>'."</td>";
+								echo "</tr>";
+
+							}
+						?>	
+						</table>
 					</div>
+					<div class="col-4">
+						<h3>Thanh Toán:</h3>
+					</div>
+				</div>
+					
 
 			<?php	
 			}
 			?>
 		</div>
+		<footer>
+			<?php include 'footer.php';?>
+		</footer>
 	</div>
 	
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>

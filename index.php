@@ -87,34 +87,7 @@
 
 		<!-- Footer -->
 		<footer>
-			<div class="row bg-dark">
-				<div class="col-4">
-					<div class="p-5">
-						<img src="Resoures/img/logo_2.png"  class="w-50 d-block">
-						<img src="Resoures/img/logoSaleNoti.png" class="w-50">
-					</div>
-					<!-- <img src="Resoures/img/logo_2.png"  class="w-20 d-block">
-					<img src="Resoures/img/logoSaleNoti.png" class="w-25"> -->
-				</div>
-				<div class="col-8 p-5">
-					<div class="row">
-						<ul class="d-flex">
-							<li><a href="#">Chính sách</a></li>
-							<li><a href="#">Điều khoản sử dụng</a></li>
-							<li><a href="#">Đổi trả sản phẩm</a></li>
-							<li><a href="#">Chính sách giao hàng</a></li>
-							<li><a href="#">Về Canvas</a></li>
-						</ul>
-					</div>
-					<div class="row">
-						<div class="d-block">
-							<p>&copy;Copyright 2020 - Canvas.</p>
-							<p>CÔNG TY CỔ PHẦN FASTECH ASIA</p>
-							<p>Email: contact@canvas.me</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php include 'footer.php';?>
 		</footer>
 		<!-- End-footer -->
 	</div>

@@ -41,7 +41,7 @@
 			$price = $row['Gia'];
 			$img_product = $row['hinh'];
 		?>
-				<div class="col-4">	
+				<div class="col-md-4 col-sm-6">	
 					<div class="card" style="margin-bottom: 30px;">
 						<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 200px;">
 						<div class="card-body">
@@ -69,7 +69,7 @@
 			$price = $row['Gia'];
 			$img_product = $row['hinh'];
 		?>
-				<div class="col-4">	
+				<div class="col-md-4 col-sm-6">	
 					<div class="card" style="margin-bottom: 30px;">
 						<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 200px;">
 						<div class="card-body">

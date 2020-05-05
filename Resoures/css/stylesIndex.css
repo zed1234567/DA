@@ -47,6 +47,11 @@ body {
 #btn-login:hover{
 	color: #1ebba3;
 }
+
+button:active,
+button:focus{
+	border: none;
+}
 .nav-link{
 	position: relative;
 }
@@ -66,6 +71,7 @@ body {
 	color: black;
 	line-height: .6rem;
 }
+
 /*--------------*/
 /*-----carousel---*/
 .carousel-inner img{
@@ -85,6 +91,21 @@ body {
 /*----------------*/
 /*-----Footer-----*/
 /*----------------*/
-.menu-footer li{
-	list-style-type: none;
+.menu-footer{
+	list-style: none;
+}
+
+.menu-footer li a{
+	text-decoration: none;
+	color: white;
+	margin-right: 10px;
+	font-size: 1rem;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	font-weight:500;
+}
+ 
+.menu-footer li:hover a {
+	color:#1ebba3;
+	transition: .5s;
 }

@@ -1,31 +1,23 @@
 
-<div class="d-flex justify-content-between mt-4 jumbotron" >
-	<ul class="list-unstyled">
-		<li><a href="#">Giới thiệu về công ty</a></li>
-		<li><a href="#">Câu hỏi thường gặp mua hàng</a></li>
-		<li><a href="#">Chính sách bảo mật</a></li>
-		<li><a href="#">Quy chế hoạt động</a></li>
-		<li><a href="#">Tra cứu thông tin bảo hành</a></li>
-	</ul>
-	<ul class="list-unstyled">
-		<li><a href="#">Hệ thống cửa hàng</a></li>
-		<li><a href="#">Hệ thống bảo hành</a></li>
-		<li><a href="#">Hướng dẫn mua online</a></li>
-		<li><a href="#">Hướng dẫn mua trả góp</a></li>
-		<li><a href="#">Chính sách trả góp</a></li>
-	</ul>
-	<ul class="list-unstyled">
-		<li><a href="#">Gọi mua hàng 1800.1060 (7:30 - 22:00)</a></li>
-		<li><a href="#">Gọi khiếu nại   1800.1062 (8:00 - 21:30)</a></li>
-		<li><a href="#">Gọi bảo hành   1800.1064 (8:00 - 21:00)</a></li>
-		<li><a href="#">Kỹ thuật   1800.1763 (7:30 - 22:00)</a></li>
-		<li><a href="#">Tư vấn mua hàng (Miễn phí)   1800 6601</a></li>
-	</ul>
-	<ul class="list-unstyled">
-		<li><a href="#">Giới thiệu về công ty</a></li> 
-		<li><a href="#">Câu hỏi thường gặp mua hàng</a></li> 
-		<li><a href="#">Chính sách bảo mật</a></li>
-		<li><a href="#">Quy chế hoạt động</a></li>
-		<li><a href="#">Tra cứu thông tin bảo hành</a></li>
-	</ul>
+<div class="row bg-dark d-flex flex-md-row flex-sm-column">
+	<div class="col-4 pl-5 d-flex flex-column justify-content-center align-content-center">
+		<img src="Resoures/img/logo_2.png"  class="w-75 p-0">
+	</div>
+	<div class="col-8 p-5 d-flex flex-column justify-content-center align-content-center">
+			<ul class="d-flex flex-sm-column flex-md-row menu-footer">
+				<li><a href="#">Chính sách</a></li>
+				<li><a href="#">Điều khoản sử dụng</a></li>
+				<li><a href="#">Đổi trả sản phẩm</a></li>
+				<li><a href="#">Chính sách giao hàng</a></li>
+				<li><a href="#">Về Canvas</a></li>
+			</ul>
+		
+		
+			<div class="d-flex flex-column font-weight-bold">
+				<p>&copy;Copyright 2020 - Canvas.</p>
+				<p>CÔNG TY CỔ PHẦN CANVAS ASIA</p>
+				<p>Email: contact@canvas.me</p>
+			</div>
+		
+	</div>
 </div>
