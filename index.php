@@ -9,13 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
 </head>
 <body>
-	<?php if(isset($_GET['message'])){
-			?>
-			<div class="alert alert-danger alert-dismissible">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<strong><?php echo $_GET['message'];?></strong>
-			</div>
-		<?php } ?>
+	
 	<div class="container-fluid">
 		<!-- NAV -->
 		

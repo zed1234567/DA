@@ -52,7 +52,7 @@
 							</div>
 							<div class="form-group">
 								<label>Mo Ta:</label>
-								<textarea rows="5" name="comment" class="form-control" value="<?php echo $row['MoTaHH'];?>"></textarea>
+								<textarea rows="5" name="comment" class="form-control"><?php echo $row['MoTaHH'];?></textarea>
 							</div>
 							<div class="form-group">
 								<label>Hinh Anh:</label>

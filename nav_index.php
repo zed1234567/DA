@@ -21,7 +21,7 @@
 						<?php if(isset($_SESSION['ID_User'])){
 							?>
 							<li class="nav-item">
-								<a href="#" class="btn btn-info text-uppercase nav-link">Hello <?php echo $_SESSION['User_Name'];?></a>
+								<a href="#" class="btn nav-link text-uppercase font-weight-bold">Hello <?php echo $_SESSION['User_Name'];?></a>
 							</li>
 						<?php
 						}
@@ -42,17 +42,18 @@
 							<a href="#" class="nav-link text-center">TABLET</a>
 						</li>
 						<li class="nav-item">
-							<a href="buy_product.php" class="nav-link text-center"><i class="fas fa-cart-arrow-down"></i><span class="notice"><?php if(!isset($_SESSION['cart_count'])){
+							<a href="buy_product.php" class="nav-link text-center"><i class="fas fa-cart-arrow-down"></i><span class="notice">
+							<?php if(!isset($_SESSION['shopping_cart'])){
 								echo 0;
 							}else{
 								echo $_SESSION['cart_count'];
 							}
 							?></span></a>
 						</li>
-						<!-- <li class="nav-item"> -->
+						<li class="nav-item">
 							<?php if(isset($_SESSION['ID_User'])){
 								?>
-								<a href="Resoures/php/logout.php" class="btn btn-outline-secondary nav-link">LOGOUT</a>
+								<a href="Resoures/php/logout.php" class="btn nav-link"><i class="fas fa-sign-out-alt"></i></a>
 							<?php
 
 								}else{
@@ -102,7 +103,7 @@
 							<?php
 							}
 							?>
-						<!-- </li> -->
+						</li>
 					</ul>
 				</div>
 			</nav>

@@ -29,7 +29,7 @@
 						$product_price = $row['Gia'];
 						$product_img = $row['hinh'];
 						?>
-						<div style="height: 70vh">
+						<div>
 							<div class="row" style="margin-top: 90px;">
 								<div class="col">
 									<h2 class="text-uppercase m-3"><?php echo $product_name;?></h2>
@@ -137,15 +137,16 @@
 					
 				}
 				$_SESSION['cart_count'] = count(array_keys($_SESSION['shopping_cart']));
+				mysqli_free_result($result);
+				echo '<meta http-equiv="refresh" content="0">';
 			}
 		?>
 		
-		<div class="row">
+		<div class="row mt-5">
 			<div class="col-md">
 				<img src="Resoures/img/quangcao10.jpeg" width="100%" style="margin: 10px 0;">
 			</div>
 		</div>
-		<div class=""></div>
 		<!-- Footer -->
 		<footer>
 			<?php include 'footer.php';?>
