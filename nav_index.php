@@ -60,7 +60,7 @@
 
 							?>
 								<button type="button" class="btn" id="btn-login" data-target="#myModal" data-toggle="modal"><i class="far fa-user"></i></button>
-								<div class="modal" id="myModal">
+								<div class="modal fade" id="myModal">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">

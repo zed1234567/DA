@@ -16,15 +16,15 @@
 
 	<?php include "nav_index.php";?>
 
-		<div style="margin-top: 90px;height: 70vh">
-			<h4 class="text-center text-uppercase font-weight-bold font-italic">Giỏ hàng.</h4>
+		<div style="margin-top: 90px;">
 			<?php
 				if (!empty($_SESSION['shopping_cart'])) {
 				?>
 				<div class="row">
 					
 					<div class="col-8">
-						<table class="table table-responsive-md text-center">
+						<h4 class="text-center text-uppercase font-weight-bold font-italic">Giỏ hàng</h4><hr>
+						<table class="table table-responsive-md text-center table-borderless">
 							<tr>
 								<th></th>
 								<th>Sản Phẩm</th>
@@ -63,8 +63,70 @@
 						</table>
 					</div>
 					<div class="col-4">
-						<h3>Thanh Toán:</h3>
-						<p>Tong tien:<?php echo $total;?></p>
+						<h4 class="text-center text-uppercase font-weight-bold font-italic">Thanh Toán</h4>
+						<hr>
+
+						<div class="row">
+							<div class="col-6">
+								<p class="text-center pl-3">Tạm tính:</p>
+							</div>
+							<div class="col-6">
+								<p class="text-center font-weight-bold"><?php echo $total;?></p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-6">
+								<p class="text-center ">Thành tiền:</p>
+							</div>
+							<div class="col-6">
+								<p class="text-center font-weight-bold"><?php echo $total;?><br><small>(Đã bao gồm VAT nếu có)</small></p>
+							</div>
+						</div>
+
+						<hr>
+						<div class="row">
+							<div class="col text-center">
+								<button class="btn btn-success font-weight-bold" data-target="#form_pay" data-toggle="modal">Tiến hành đặt hàng</button>
+								<div class="modal fade w-100" id="form_pay">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+
+											<div class="modal-header">
+												<h4 class="modal-title">Canvas | <span class="font-italic" style="font-size: 1.2rem">Thông tin khách hàng</span></h4>
+												 <button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+
+											<div class="modal-body">
+												
+												<form action="" method="post">
+													<div class="row">
+														<div class="col-6">
+															<input type="text" name="user" class="form-control" placeholder="Họ và Tên" required>
+														</div>
+														<div class="col-6">
+															<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" required>
+														</div>
+
+													</div>
+													<div class="row" style="padding-top: 16px;">
+														<div class="col">
+															<input type="text" name="address" class="form-control" placeholder="Địa chỉ giao hàng" required>
+														</div>
+													</div>
+													<div class="row" style="padding-top: 16px;">
+														<div class="col">
+															<button type="submit" name="submit" class="btn btn-success font-weight-bold" style="width: 50%">Đặt Hàng</button>
+														</div>
+													</div>
+												</form>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 					
@@ -72,9 +134,11 @@
 			<?php	
 			}else{
 				?>
-				<div class="d-flex justify-content-center">
+				<div class="d-flex justify-content-center mb-lg-5">
+					
 					<h3>Bạn chưa chọn sản phẩm nào!!</h3>
 					<a href="index.php" class="btn btn-danger ml-5">Tiếp tục mua sắm</a>
+				
 				</div>
 				
 
@@ -89,6 +153,7 @@
 								unset($_SESSION['shopping_cart'][$key]);
 								$_SESSION['cart_count'] = count(array_keys($_SESSION['shopping_cart']));
 								echo '<meta http-equiv="refresh" content="0">';
+								break;
 							}
 							if(empty($_SESSION['shopping_cart'])){
 								unset($_SESSION['shopping_cart']);

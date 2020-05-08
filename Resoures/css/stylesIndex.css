@@ -12,6 +12,7 @@ body {
 	line-height: 1.5;
 	color: #505962;
 	font-family: 'Lato', sans-serif;
+	height: 100%;
 }
 /*-----NAV------*/
 .modal-backdrop{
@@ -91,6 +92,11 @@ button:focus{
 /*----------------*/
 /*-----Footer-----*/
 /*----------------*/
+footer{
+	/*position: absolute;
+    bottom:0;*/
+
+}
 .menu-footer{
 	list-style: none;
 }
