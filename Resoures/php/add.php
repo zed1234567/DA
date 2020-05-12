@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php session_start();
+	if(!isset($_SESSION["admin"])){
+		header("Location: /../../../../Do_an_web/index.php");
+	}else{
+
+		?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,3 +118,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php
+}
+
+?>

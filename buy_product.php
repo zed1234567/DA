@@ -102,18 +102,20 @@
 												<form action="" method="post">
 													<div class="row">
 														<div class="col-6">
-															<input type="text" name="user" class="form-control" placeholder="Họ và Tên" required>
+															<input type="text" name="user" class="form-control" placeholder="Họ và Tên" required pattern="[A-Za-z ]{10,}" title="Nhap dung ho ten">
 														</div>
 														<div class="col-6">
-															<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" required>
+															<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" pattern="[0-9]{10}" title="10 so" required>
 														</div>
 
 													</div>
+
 													<div class="row" style="padding-top: 16px;">
 														<div class="col">
-															<input type="text" name="address" class="form-control" placeholder="Địa chỉ giao hàng" required>
+															<input type="text" name="address" class="form-control" placeholder="Địa chỉ giao hàng" required pattern="[A-Za-z0-9 /]{10,}" title="Nhap dung dia chi">
 														</div>
 													</div>
+
 													<div class="row" style="padding-top: 16px;">
 														<div class="col">
 															<button type="submit" name="submit" class="btn btn-success font-weight-bold" style="width: 50%">Đặt Hàng</button>
@@ -146,8 +148,10 @@
 			}
 			?>
 			<?php
+				//Delete product form shopping cart
 				if(isset($_POST['delete'])){
 					if(!empty($_SESSION['shopping_cart'])){
+
 						foreach ($_SESSION['shopping_cart'] as $key => $value) {
 							if($_POST['id'] == $key){
 								unset($_SESSION['shopping_cart'][$key]);
@@ -162,6 +166,8 @@
 
 					}
 				}
+
+				//Change quantity of shopping cart
 				if(isset($_POST['action']) && $_POST['action'] == "change"){
 				
 					foreach($_SESSION['shopping_cart'] as &$value){
@@ -171,6 +177,17 @@
 							break;
 						}
 					}
+				}
+
+				//info customer form shopping cart 
+				if(isset($_POST['submit'])){
+
+					$name_customer = mysqli_real_escape_string($connect,$_POST['user']);
+					$phone_customer = mysqli_real_escape_string($connect,$_POST['phone']);
+					$address_customer = mysqli_real_escape_string($connect,$_POST['address']);
+
+					$sql = "";
+
 				}
 
 

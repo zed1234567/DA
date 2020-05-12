@@ -18,7 +18,7 @@
 				
 				<div class="collapse navbar-collapse" id="nav">
 					<ul class="navbar-nav ml-auto">
-						<?php if(isset($_SESSION['ID_User'])){
+						<?php if(isset($_SESSION['User_Name'])){
 							?>
 							<li class="nav-item">
 								<a href="#" class="btn nav-link text-uppercase font-weight-bold">Hello <?php echo $_SESSION['User_Name'];?></a>
@@ -51,7 +51,7 @@
 							?></span></a>
 						</li>
 						<li class="nav-item">
-							<?php if(isset($_SESSION['ID_User'])){
+							<?php if(isset($_SESSION['User_Name'])){
 								?>
 								<a href="Resoures/php/logout.php" class="btn nav-link"><i class="fas fa-sign-out-alt"></i></a>
 							<?php
