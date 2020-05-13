@@ -16,7 +16,7 @@
 						<div class="card-body">
 							<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
 							<p class="card-text"><?php echo $price." VND"?></p>
-							<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-info stretched-link">Buy now.</a>
+							<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success stretched-link">Buy now.</a>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 						<div class="card-body">
 							<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
 							<p class="card-text"><?php echo $price." VND"?></p>
-							<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-info stretched-link">Buy now.</a>
+							<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success stretched-link">Buy now.</a>
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 						<div class="card-body">
 							<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
 							<p class="card-text"><?php echo $price." VND"?></p>
-							<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-info stretched-link">Buy now.</a>
+							<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success stretched-link">Buy now.</a>
 						</div>
 					</div>
 				</div>

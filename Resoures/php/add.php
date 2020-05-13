@@ -21,6 +21,7 @@
 			<div class="col-md-10">
 				<h1 class="text-center font-weight-bold">Add Product</h1>
 				<form enctype="multipart/form-data" class="was-validated" method="post">
+					
 					<div class="row">
 						<div class="col-6">
 							<div class="form-group">
@@ -37,25 +38,30 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="form-group">
 						<label>Gia:</label>
 						<input type="number" name="gia" class="form-control" required>
 						<div class="invalid-feedback">Please fill out this field.</div>
 					</div>
+
 					<div class="form-group">
 						<label>So Luong Hang:</label>
 						<input type="number" name="sl" class="form-control" required>
 						<div class="invalid-feedback">Please fill out this field.</div>
 					</div>		
+
 					<div class="form-group">
 						<label>Ma Nhom:</label>
 						<input type="text" name="mnhom" class="form-control" placeholder="Nhap Ma Nhom" required>
 						<div class="invalid-feedback">Please fill out this field.</div>
 					</div>
+
 					<div class="form-group">
 						<label>Mo Ta:</label>
 						<textarea rows="5" name="comment" class="form-control" placeholder="..."></textarea>
 					</div>
+
 					<div class="form-group">
 						<label>Hinh Anh:</label>
 						<input type="file" name="imgupload">
@@ -74,14 +80,14 @@
 				$sl_product = $_POST['sl'];
 				$mnhom_product = mysqli_real_escape_string($connect,$_POST['mnhom']);
 				$mota_product = mysqli_real_escape_string($connect,$_POST['comment']);
-				// check imgupload
+				// check img upload
 				$file = $_FILES['imgupload'];
 				$fileName = $file['name'];
 				$fileType = $file['type'];
 				$fileTmp = $file['tmp_name'];
 				$fileErr = $file['error'];
 				$fileSize = $file['size'];
-				// check loai img
+				// check file img
 				$fileEXT = explode('.',$fileName);
 				$fileExtension = strtolower(end($fileEXT));
 				$allowedExt = array("jpg","png");
@@ -106,7 +112,7 @@
 						header("Location: add.php?message=error");
 					}
 				}else{
-					header("Location: add.php?message=wrongfile");
+					header("Location: add.php?message=wrong+file");
 				}
 
 			}

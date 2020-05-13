@@ -14,7 +14,7 @@
 <body>
 	<div class="container-fluid">
 
-	<?php include "nav_index.php";?>
+ 	<?php include "nav_index.php";?> 
 
 		<div style="margin-top: 90px;">
 			<?php
@@ -181,13 +181,32 @@
 
 				//info customer form shopping cart 
 				if(isset($_POST['submit'])){
-
 					$name_customer = mysqli_real_escape_string($connect,$_POST['user']);
 					$phone_customer = mysqli_real_escape_string($connect,$_POST['phone']);
 					$address_customer = mysqli_real_escape_string($connect,$_POST['address']);
+					//random id
+					$id_customer = $id_order = rand(1,9999);
+					
+					$sql_insert_customer = "INSERT INTO `khachhang`(`MSKH`, `HoTenKH`, `DiaChi`, `SDT`) VALUES('$id_customer','$name_customer','$address_customer','$phone_customer')";
+					mysqli_query($connect,$sql_insert_customer);
+					
+					$id_who_sell = mysqli_query($connect,"SELECT `MSNV` FROM `nhanvien` WHERE `ChucVu` = 'Ban Hang' LIMIT 1");
+					$row=mysqli_fetch_array($id_who_sell);
+					$MSNV= $row['MSNV'];
+					mysqli_free_result($id_who_sell);
 
-					$sql = "";
-
+					$sql_insert_order = "INSERT INTO `dathang`(`SoDonDH`, `MSKH`, `MSNV`, `TrangThai`) VALUES('$id_order','$id_customer','$MSNV','Da Nhan')";
+					mysqli_query($connect,$sql_insert_order);
+					
+					foreach($_SESSION['shopping_cart'] as $key => $value){
+						$quantity = $value['quantity'];
+						$price = $value['price'];
+						$sql_insert_detail_order = "INSERT INTO `chitietdathang`(`SoDonDH`, `MSHH`, `SoLuong`, `GiaDatHang`) VALUES('$id_order','$key','$quantity','$price')";
+						mysqli_query($connect,$sql_insert_detail_order);
+						//con nua
+		
+					}
+					
 				}
 
 

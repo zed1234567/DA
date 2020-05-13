@@ -12,7 +12,7 @@
 					<a href="showallproduct.php">--Product</a>
 				</li>
 				<li class="li-custom">
-					<a href="#">--Member</a>
+					<a href="showallmember.php">--Member</a>
 				</li>
 			</ul>
 		</li>
