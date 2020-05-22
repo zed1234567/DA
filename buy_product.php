@@ -35,6 +35,7 @@
 							<?php
 							$total=0;
 							foreach($_SESSION['shopping_cart'] as $key => $value){
+
 								$total +=($value['price']*$value['quantity']);
 								?>
 								<tr>
@@ -42,7 +43,7 @@
 										<img src="Resoures/<?php echo $value['img'];?>" height='100px' width='100px'>
 									</td>
 									<td><?php echo $value['name'];?></td>
-									<td><?php echo $value['price'];?></td>
+									<td><?php echo number_format($value['price']);?></td>
 									<td>
 										<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 											<input type="hidden" name="action" value="change">
@@ -53,7 +54,7 @@
 									<td>
 										<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 											<input type="hidden" name="id" value="<?php echo $key;?>">
-											<button class="btn" name="delete"><i class="fas fa-times"></i></button>
+											<button class="btn btn-delete" name="delete"><i class="fas fa-times"></i></button>
 										</form>
 									</td>
 								</tr>
@@ -71,7 +72,7 @@
 								<p class="text-center pl-3">Tạm tính:</p>
 							</div>
 							<div class="col-6">
-								<p class="text-center font-weight-bold"><?php echo $total;?></p>
+								<p class="text-center font-weight-bold"><?php echo number_format($total)."₫";?></p>
 							</div>
 						</div>
 
@@ -80,14 +81,14 @@
 								<p class="text-center ">Thành tiền:</p>
 							</div>
 							<div class="col-6">
-								<p class="text-center font-weight-bold"><?php echo $total;?><br><small>(Đã bao gồm VAT nếu có)</small></p>
+								<p class="text-center font-weight-bold"><?php  echo number_format($total)."₫";?><br><small>(Đã bao gồm VAT nếu có)</small></p>
 							</div>
 						</div>
 
 						<hr>
 						<div class="row">
 							<div class="col text-center">
-								<button class="btn btn-success font-weight-bold" data-target="#form_pay" data-toggle="modal">Tiến hành đặt hàng</button>
+								<button class="btn btn-success font-weight-bold" data-target="#form_pay" data-toggle="modal" id="button_pay"">Tiến hành đặt hàng</button>
 								<div class="modal fade w-100" id="form_pay">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
@@ -136,7 +137,8 @@
 			<?php	
 			}else{
 				?>
-				<div class="d-flex justify-content-center mb-lg-5">
+
+				<div class="d-flex justify-content-center mb-lg-5 h-70">
 					
 					<h3>Bạn chưa chọn sản phẩm nào!!</h3>
 					<a href="index.php" class="btn btn-danger ml-5">Tiếp tục mua sắm</a>
@@ -199,14 +201,14 @@
 					mysqli_query($connect,$sql_insert_order);
 					
 					foreach($_SESSION['shopping_cart'] as $key => $value){
+						
 						$quantity = $value['quantity'];
 						$price = $value['price'];
 						$sql_insert_detail_order = "INSERT INTO `chitietdathang`(`SoDonDH`, `MSHH`, `SoLuong`, `GiaDatHang`) VALUES('$id_order','$key','$quantity','$price')";
 						mysqli_query($connect,$sql_insert_detail_order);
-						//con nua
 		
 					}
-					
+				
 				}
 
 
@@ -216,7 +218,15 @@
 			<?php include 'footer.php';?>
 		</footer>
 	</div>
-	
+	<script type="text/javascript">
+		function checkLogin(){
+			var is_login="<?php if(isset($_SESSION['User_Name'])){echo "1";}else{echo "0";}?>";
+			if(is_login =="0"){
+				document.getElementById("button_pay").disabled = true;
+				document.getElementById("btn-login").click();
+			}
+		}
+	</script>
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

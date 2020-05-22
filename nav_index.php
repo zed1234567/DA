@@ -18,13 +18,20 @@
 				
 				<div class="collapse navbar-collapse" id="nav">
 					<ul class="navbar-nav ml-auto">
-						<?php if(isset($_SESSION['User_Name'])){
+						<?php 
+							if(isset($_SESSION['User_Name']) && isset($_SESSION["admin"])){
 							?>
-							<li class="nav-item">
-								<a href="#" class="btn nav-link text-uppercase font-weight-bold">Hello <?php echo $_SESSION['User_Name'];?></a>
-							</li>
+								<li class="nav-item">
+									<a href="Resoures/php/admin.php" class="btn nav-link text-uppercase font-weight-bold">Hello<?php echo $_SESSION['User_Name'];?></a>
+								</li>
 						<?php
-						}
+							}else if(isset($_SESSION['User_Name'])){
+								?>
+								<li class="nav-item">
+									<a href="#" class="btn nav-link text-uppercase font-weight-bold">Hello<?php echo $_SESSION['User_Name'];?></a>
+								</li>
+						<?php
+							}
 						?>
 						<li class="nav-item">
 							<a href="index.php" class="nav-link text-center">HOME</a>

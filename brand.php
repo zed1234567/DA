@@ -14,7 +14,7 @@
 	<div class="container-fluid">
 		<!-- NAV -->
 		<?php include "nav_index.php"?>
-		<!-- END-NAV -->
+		
 
 		<!-- carousel -->
 
@@ -24,12 +24,11 @@
 			</div>
 		</div>
 		
-		
-
+		<!-- Nav-filter -->
 		<div class="row">
 			<div class="col">
 				<div class="d-flex justify-content-between">
-					<h3>ĐIỆN THOẠI NỔI BẬT NHẤT</h3>
+					<h3>ĐIỆN THOẠI <?php echo $_POST['brand'];?></h3>
 
 					<?php include "nav_filter.php";?>
 					
@@ -37,47 +36,66 @@
 				<hr>
 			</div>
 		</div>
-		<div class="row">
-				<?php
-					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT'";
-					$result = mysqli_query($connect,$sql);
-					while ($row= mysqli_fetch_array($result)) {
-						$id = $row['MSHH'];
-						$name_product = $row['TenHH'];
-						$price = number_format($row['Gia']);
-						$img_product = $row['hinh'];
-					?>
-							<div class="col-md-3 col-sm-6">	
-								<div class="card shadow" style="margin-bottom: 30px;">
-									<div class="inner">
-										<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
-									</div>
-									<div class="card-body">
-										<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
-										<div class="card-text">
-											<?php echo $price." VND"?><br>
 
-											<div class="product-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-											</div>
-											
+		<!-- show product -->
+		<div class=row>
+        
+		<?php
+			//select product by brand
+			if(isset($_POST['select'])){
+				
+				$brand_name = mysqli_real_escape_string($connect,$_POST['brand']);
+				$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `TenHH` Like '%$brand_name%'";
+
+				if(isset($_POST['sort']) && $_POST['sort']=="ASC"){
+					$sql .=" ORDER BY `Gia` ASC";
+				}
+
+				if(isset($_POST['sort']) && $_POST['sort']=="DESC"){
+					$sql .=" ORDER BY `Gia` DESC";
+				}
+			
+				$result = mysqli_query($connect,$sql);
+				while ($row= mysqli_fetch_array($result)) {
+					$id = $row['MSHH'];
+					$name_product = $row['TenHH'];
+					$price = number_format($row['Gia']);
+					$img_product = $row['hinh'];
+				?>
+						<div class="col-md-3 col-sm-6">	
+							<div class="card shadow" style="margin-bottom: 30px;">
+								<div class="inner">
+									<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
+								</div>
+								<div class="card-body">
+									<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
+									<div class="card-text">
+										<?php echo $price." VND"?><br>
+
+										<div class="product-rating">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star-half-alt"></i>
 										</div>
-										<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success mt-1">Buy now.</a>
+										
 									</div>
+									<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success mt-1">Buy now.</a>
 								</div>
 							</div>
+						</div>
+						
 
-					<?php
+				<?php
 					}
-					mysqli_free_result($result);
-					
-				?>
+				mysqli_free_result($result);
+			}
+
+
+			// select product by price
+		?>
 		</div>
-		
 		<!-- Footer -->
 		<div class="row">
 			<div class="col">

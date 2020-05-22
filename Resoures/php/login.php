@@ -9,6 +9,8 @@
 		$result = mysqli_query($connect,$sql);
 		if(mysqli_num_rows($result)<=0){
 			header("Location: ../../../../../Do_an_web/index.php?message=faild+gmail");
+			die;
+
 		}
 		else{
 			while ($row = mysqli_fetch_array($result)) {
@@ -18,7 +20,8 @@
 				else if(password_verify($pwd,$row['pwd']) && $row['User_role']==1){
 					$_SESSION["admin"]=1;
 					$_SESSION["User_Name"]= $row['User_Name'];
-					header("Location: ../../../../../Do_an_web/Resoures/php/admin.php?message=login+sussces");
+					$_SESSION['ID_User'] = $row['ID_User'];
+					header("Location: admin.php?message=login+sussces");
 
 				}else if(password_verify($pwd,$row['pwd']) && $row['User_role']!=1){
 					$_SESSION['ID_User'] = $row['ID_User'];

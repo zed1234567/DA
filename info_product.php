@@ -26,7 +26,7 @@
 					$result = mysqli_query($connect,$sql);
 					while ( $row = mysqli_fetch_array($result)) {
 						$product_name = $row['TenHH'];
-						$product_price = $row['Gia'];
+						$product_price =  number_format($row['Gia']);
 						$product_img = $row['hinh'];
 						?>
 						<div>
@@ -37,7 +37,10 @@
 							</div>
 							<div class="row">
 								<div class="col-md-4 col-sm">
-									<img src="Resoures/<?php echo $product_img;?>" class="img-fluid mx-auto d-block" style="width: 400px;max-height: 400px;">
+									<div class="inner">
+										<img src="Resoures/<?php echo $product_img;?>" class="img-fluid mx-auto d-block" style="width: 400px;max-height: 400px;">
+									</div>
+									
 								</div>
 								<div class="col-md-4 col-sm-12">
 									<h2><?php echo $product_price." ";?><span style="font-size: 20px">VND</span></h2>
@@ -108,7 +111,7 @@
 				$row = mysqli_fetch_array($result);
 
 				$name_product = $row['TenHH'];
-				$price_product = $row['Gia'];
+				$price_product =$row['Gia'];
 				$img_product = $row['hinh'];
 				
 				$cart_array = array($id_product => array(
@@ -154,7 +157,7 @@
 		<!-- End-footer -->
 	</div>
 	<script type="text/javascript">
-		al
+		
 	</script>
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -34,6 +34,8 @@ body {
 	background-color: #1ebba3 !important;
 }
 
+
+
 .navbar-brand img{
 	height: 4rem;
 }
@@ -115,3 +117,55 @@ footer{
 	color:#1ebba3;
 	transition: .5s;
 }
+
+/* btn-delete-product */
+.btn-delete:hover{
+	color: red;
+}
+
+/* Hover product */
+.inner{
+    overflow: hidden;
+}
+ 
+.card img{
+    transition: all 1.5s ease;
+}
+ 
+.card:hover img{
+    transform: scale(1.2);
+}
+
+.card-text {
+	color: #e10c00;
+}
+
+.card:hover h4{
+	color: #1ebba3;
+}
+
+.product-rating{
+	font-size: small;
+	color: #ffc107
+
+}
+
+.card:hover{
+	cursor: pointer;
+}
+
+#scroll-btn{
+	display: none;
+	position: fixed;
+	right: 50px;
+	bottom: 150px;
+	z-index: 99;
+	
+}
+
+#scroll-btn:hover i {
+	color: black;
+	transform: translateY(-3px);
+	transition: .5s;
+}
+

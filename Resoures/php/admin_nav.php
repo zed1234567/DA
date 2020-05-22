@@ -14,6 +14,12 @@
 				<li class="li-custom">
 					<a href="showallmember.php">--Member</a>
 				</li>
+				<li class="li-custom">
+					<a href="showallcustomer.php">--Customer</a>
+				</li>
+				<li class="li-custom">
+					<a href="#">--Order</a>
+				</li>
 			</ul>
 		</li>
 		<li class="active">

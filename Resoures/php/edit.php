@@ -22,8 +22,9 @@
 		?>
 			<div class="container-fluid">
 				<div class="row">
-					
-					<?php include 'admin_nav.php';?>
+					<div class="col-2">
+						<?php include 'admin_nav.php';?>
+					</div>
 					<div class="col-md-10">
 						<h1 class="text-center font-weight-bold">Edit Product</h1>
 						<form enctype="multipart/form-data" method="post">

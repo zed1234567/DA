@@ -17,6 +17,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
+			
 			<div class="col-2">
 				<?php include 'admin_nav.php';?>
 			</div>
@@ -24,31 +25,24 @@
 			<div class="col-md-10">
 				<?php
 				include 'connect.php';
-				$sql = "SELECT * FROM `nhanvien`";
+				$sql = "SELECT * FROM `khachhang`";
 				$result = mysqli_query($connect,$sql);
 				?>
-				<h3 style="text-align: center;">Member</h3>
+				<h3 style="text-align: center;">Customer</h3>
 				<table class="table table-striped">
 					<tr>
-						<th>MSNV</th>
-						<th>Ho Ten NV</th>
-						<th>Chuc Vu</th>
+						<th>MSKH</th>
+						<th>Ho Ten KH</th>
 						<th>Dia Chi</th>
 						<th>SDT</th>
-                        <th></th>
 					</tr>
 					<?php
 						while($row = mysqli_fetch_array($result)){
 							echo "<tr>";
-							echo "<td>".$row['MSNV']."</td>";
-							echo "<td>".$row['HoTenNV']."</td>";
-							echo "<td>".$row['ChucVu']."</td>";
+							echo "<td>".$row['MSKH']."</td>";
+							echo "<td>".$row['HoTenKH']."</td>";
 							echo "<td>".$row['DiaChi']."</td>";
                             echo "<td>".$row['SDT']."</td>";
-							echo "<td>
-									<a class='btn btn-secondary' href='editmember.php?MSNV=".$row['MSNV']."'>Edit</a>
-									<a class='btn btn-danger' href='deletemember.php?MSNV=".$row['MSNV']."'>Delete</a>
-								 </td>";
 							echo "</tr>";
 						}
 						mysqli_close($connect);

@@ -19,8 +19,10 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			
+			<div class="col-2">
 				<?php include 'admin_nav.php';?>
+			</div>
+				
 			
 			<div class="col-md-10">
 				<?php

@@ -80,11 +80,33 @@
 		<!-- END-ShowProduct -->
 
 		<!-- Footer -->
+		<button class="btn btn-success" id="scroll-btn" onclick="goTop();"><i class="fas fa-chevron-up"></i></button>
 		<footer>
 			<?php include 'footer.php';?>
 		</footer>
 		<!-- End-footer -->
 	</div>
+	<script type="text/javascript">
+		var sroll_btn = document.getElementById("scroll-btn");
+
+		window.onscroll = function(){
+			scrollFunction();
+		}
+
+		function scrollFunction(){
+			if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+				sroll_btn.style.display = "block";
+			}else{
+				sroll_btn.style.display = "none";
+			}
+		}
+
+		function goTop(){
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop =0;
+		}
+
+	</script>
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
