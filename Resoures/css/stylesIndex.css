@@ -133,7 +133,7 @@ footer{
 }
  
 .card:hover img{
-    transform: scale(1.2);
+    transform: scale(0.9);
 }
 
 .card-text {
@@ -167,5 +167,14 @@ footer{
 	color: black;
 	transform: translateY(-3px);
 	transition: .5s;
+}
+
+.info-customer-left{
+	font-weight: 700;
+
+}
+
+.info-customer-right{
+	font-weight: 700;
 }
 

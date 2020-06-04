@@ -71,7 +71,7 @@
 
 			<div class="row">
 				<div class="col-md">
-					<img src="Resoures/img/qc_1.gif" width="100%" style="margin-bottom: 5px">
+					<img src="Resoures/img/qc_1.gif" width="100%" style="margin-bottom: 5px" class="mb-4">
 				</div>
 			</div>
 		</div>

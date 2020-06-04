@@ -28,7 +28,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="d-flex justify-content-between">
-					<h3>ĐIỆN THOẠI <?php echo $_POST['brand'];?></h3>
+					<h3>ĐIỆN THOẠI <?php echo empty($_POST['brand']) ? "" : $_POST['brand'];?></h3>
 
 					<?php include "nav_filter.php";?>
 					
@@ -44,8 +44,12 @@
 			//select product by brand
 			if(isset($_POST['select'])){
 				
-				$brand_name = mysqli_real_escape_string($connect,$_POST['brand']);
-				$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `TenHH` Like '%$brand_name%'";
+				if(isset($_POST['brand'])){
+					$brand_name = mysqli_real_escape_string($connect,$_POST['brand']);
+					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `TenHH` Like '%$brand_name%' AND `MaNhom`='DT'";
+				}else{
+					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT' ";
+				}
 
 				if(isset($_POST['sort']) && $_POST['sort']=="ASC"){
 					$sql .=" ORDER BY `Gia` ASC";

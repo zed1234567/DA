@@ -23,7 +23,7 @@
 				<?php include 'admin_nav.php';?>
 			</div>
 			<div class="col-md-10">
-				
+				<?php echo $_SERVER['SCRIPT_NAME'];?>
 			</div>
 		</div>
 		

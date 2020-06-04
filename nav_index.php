@@ -22,13 +22,13 @@
 							if(isset($_SESSION['User_Name']) && isset($_SESSION["admin"])){
 							?>
 								<li class="nav-item">
-									<a href="Resoures/php/admin.php" class="btn nav-link text-uppercase font-weight-bold">Hello<?php echo $_SESSION['User_Name'];?></a>
+									<a href="Resoures/php/admin.php" class="nav-link text-center">HELLO <span class="text-uppercase"><?php echo $_SESSION['User_Name'];?></span></a>
 								</li>
 						<?php
 							}else if(isset($_SESSION['User_Name'])){
 								?>
 								<li class="nav-item">
-									<a href="#" class="btn nav-link text-uppercase font-weight-bold">Hello<?php echo $_SESSION['User_Name'];?></a>
+									<a href="info_customer.php" class="nav-link text-center">HELLO <span class="text-uppercase"><?php echo $_SESSION['User_Name'];?></span></a>
 								</li>
 						<?php
 							}

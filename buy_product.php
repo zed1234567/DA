@@ -88,7 +88,7 @@
 						<hr>
 						<div class="row">
 							<div class="col text-center">
-								<button class="btn btn-success font-weight-bold" data-target="#form_pay" data-toggle="modal" id="button_pay"">Tiến hành đặt hàng</button>
+								<button class="btn btn-success font-weight-bold" data-target="#form_pay" data-toggle="modal" id="button_pay"" onclick="checkLogin()">Tiến hành đặt hàng</button>
 								<div class="modal fade w-100" id="form_pay">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
@@ -99,21 +99,24 @@
 											</div>
 
 											<div class="modal-body">
-												
-												<form action="" method="post">
+												<?php
+													$sql_customer ="SELECT `HoTenKH`, `DiaChi`, `SDT` FROM `khachhang` WHERE `MSKH`=".$_SESSION['ID_User'];
+													$row = mysqli_fetch_array(mysqli_query($connect,$sql_customer));
+												?>
+												<form action="print_bill.php" method="post">
 													<div class="row">
 														<div class="col-6">
-															<input type="text" name="user" class="form-control" placeholder="Họ và Tên" required pattern="[A-Za-z ]{10,}" title="Nhap dung ho ten">
+															<input type="text" name="user" class="form-control" placeholder="Họ và Tên" value="<?php echo $row['HoTenKH'] ?>" required pattern="[A-Za-z ]{10,}" title="Nhap dung ho ten">
 														</div>
 														<div class="col-6">
-															<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" pattern="[0-9]{10}" title="10 so" required>
+															<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" value="<?php echo $row['SDT'] ?>" pattern="[0-9]{10}" title="10 so" required>
 														</div>
 
 													</div>
 
 													<div class="row" style="padding-top: 16px;">
 														<div class="col">
-															<input type="text" name="address" class="form-control" placeholder="Địa chỉ giao hàng" required pattern="[A-Za-z0-9 /]{10,}" title="Nhap dung dia chi">
+															<input type="text" name="address" class="form-control" value="<?php echo $row['DiaChi'] ?>" placeholder="Địa chỉ giao hàng" required pattern="[A-Za-z0-9 /]{10,}" title="Nhap dung dia chi">
 														</div>
 													</div>
 
@@ -169,47 +172,69 @@
 					}
 				}
 
-				//Change quantity of shopping cart
+				//Change quantity product of shopping cart
 				if(isset($_POST['action']) && $_POST['action'] == "change"){
 				
 					foreach($_SESSION['shopping_cart'] as &$value){
 						if($value['name'] == $_POST['id']){
-							$value['quantity'] = $_POST['sl'];
-							echo '<meta http-equiv="refresh" content="0">';
-							break;
+
+							$name = $value['name'];
+							$check_quantity = "SELECT `SoLuongHang` FROM `hanghoa` WHERE `TenHH`='$name'";
+							$result = mysqli_fetch_array(mysqli_query($connect,$check_quantity));
+
+							if($_POST['sl'] > $result['SoLuongHang']){
+
+								//set quantity = max quantity in database
+								$value['quantity'] = $result['SoLuongHang'];
+								echo '<meta http-equiv="refresh" content="0">';
+								break;
+
+							}else{
+
+								$value['quantity'] = $_POST['sl'];
+								echo '<meta http-equiv="refresh" content="0">';
+								break;
+								
+							}
+
+
+							// $value['quantity'] = $_POST['sl'];
+							// echo '<meta http-equiv="refresh" content="0">';
+							// break;
 						}
 					}
 				}
 
 				//info customer form shopping cart 
-				if(isset($_POST['submit'])){
-					$name_customer = mysqli_real_escape_string($connect,$_POST['user']);
-					$phone_customer = mysqli_real_escape_string($connect,$_POST['phone']);
-					$address_customer = mysqli_real_escape_string($connect,$_POST['address']);
-					//random id
-					$id_customer = $id_order = rand(1,9999);
+				// if(isset($_POST['submit'])){
+				// 	$name_customer = mysqli_real_escape_string($connect,$_POST['user']);
+				// 	$phone_customer = mysqli_real_escape_string($connect,$_POST['phone']);
+				// 	$address_customer = mysqli_real_escape_string($connect,$_POST['address']);
+				// 	//random id
+				// 	$id_customer = $id_order = rand(1,9999);
 					
-					$sql_insert_customer = "INSERT INTO `khachhang`(`MSKH`, `HoTenKH`, `DiaChi`, `SDT`) VALUES('$id_customer','$name_customer','$address_customer','$phone_customer')";
-					mysqli_query($connect,$sql_insert_customer);
+				// 	$sql_insert_customer = "INSERT INTO `khachhang`(`MSKH`, `HoTenKH`, `DiaChi`, `SDT`) VALUES('$id_customer','$name_customer','$address_customer','$phone_customer')";
+				// 	mysqli_query($connect,$sql_insert_customer);
 					
-					$id_who_sell = mysqli_query($connect,"SELECT `MSNV` FROM `nhanvien` WHERE `ChucVu` = 'Ban Hang' LIMIT 1");
-					$row=mysqli_fetch_array($id_who_sell);
-					$MSNV= $row['MSNV'];
-					mysqli_free_result($id_who_sell);
+				// 	$id_who_sell = mysqli_query($connect,"SELECT `MSNV` FROM `nhanvien` WHERE `ChucVu` = 'Ban Hang' LIMIT 1");
+				// 	$row=mysqli_fetch_array($id_who_sell);
+				// 	$MSNV= $row['MSNV'];
+				// 	mysqli_free_result($id_who_sell);
 
-					$sql_insert_order = "INSERT INTO `dathang`(`SoDonDH`, `MSKH`, `MSNV`, `TrangThai`) VALUES('$id_order','$id_customer','$MSNV','Da Nhan')";
-					mysqli_query($connect,$sql_insert_order);
+				// 	$sql_insert_order = "INSERT INTO `dathang`(`SoDonDH`, `MSKH`, `MSNV`, `TrangThai`) VALUES('$id_order','$id_customer','$MSNV','Da Nhan')";
+				// 	mysqli_query($connect,$sql_insert_order);
 					
-					foreach($_SESSION['shopping_cart'] as $key => $value){
+				// 	foreach($_SESSION['shopping_cart'] as $key => $value){
 						
-						$quantity = $value['quantity'];
-						$price = $value['price'];
-						$sql_insert_detail_order = "INSERT INTO `chitietdathang`(`SoDonDH`, `MSHH`, `SoLuong`, `GiaDatHang`) VALUES('$id_order','$key','$quantity','$price')";
-						mysqli_query($connect,$sql_insert_detail_order);
+				// 		$quantity = $value['quantity'];
+				// 		$price = $value['price'];
+				// 		$sql_insert_detail_order = "INSERT INTO `chitietdathang`(`SoDonDH`, `MSHH`, `SoLuong`, `GiaDatHang`) VALUES('$id_order','$key','$quantity','$price')";
+				// 		mysqli_query($connect,$sql_insert_detail_order);
 		
-					}
+				// 	}
+				// 	echo "Thanh Cong";
 				
-				}
+				// }
 
 
 			?>

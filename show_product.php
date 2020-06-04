@@ -1,5 +1,13 @@
 <?php include 'Resoures/php/connect.php';?>
-<h4>ĐIỆN THOẠI KHUYẾN MẠI HOT</h4>
+<div class="row">
+	<div class="col">
+		<div class="d-flex justify-content-between">
+			<h4>ĐIỆN THOẠI KHUYẾN MẠI HOT</h4>
+			<a href="phone.php">Xem tất cả</a>
+		</div>
+	</div>
+</div>
+
 <div class="row">
 	<?php
 		$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT' or `MaNhom`='MT' order by `TenHH` desc limit 8";
@@ -11,7 +19,7 @@
 			$img_product = $row['hinh'];
 		?>
 			
-				<div class="col-md-4 col-sm-6">	
+				<div class="col-lg-3 col-md-6 col-sm">	
 					<div class="card shadow" style="margin-bottom: 30px;">
 						<div class="inner">
 							<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
@@ -45,7 +53,15 @@
 
 	
 </div>
-<h4>LAPTOP KHUYẾN MẠI HOT</h4>
+
+<div class="row">
+	<div class="col">
+		<div class="d-flex justify-content-between">
+			<h4>LAPTOP KHUYẾN MẠI HOT</h4>
+			<a href="">Xem tất cả</a>
+		</div>
+	</div>
+</div>
 <div class="row">
 	<?php
 		$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT' or `MaNhom`='MT' order by `TenHH` desc limit 6";
@@ -87,7 +103,14 @@
 	?>
 	
 </div>
-<h4>TABLET KHUYẾN MẠI HOT</h4>
+<div class="row">
+	<div class="col">
+		<div class="d-flex justify-content-between">
+			<h4>TABLET KHUYẾN MẠI HOT</h4>
+			<a href="">Xem tất cả</a>
+		</div>
+	</div>
+</div>
 <div class="row">
 	<?php
 		$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT' or `MaNhom`='MT' order by `TenHH` desc limit 6";
