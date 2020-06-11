@@ -23,7 +23,32 @@
 				<?php include 'admin_nav.php';?>
 			</div>
 			<div class="col-md-10">
-				<?php echo $_SERVER['SCRIPT_NAME'];?>
+				<hr><h2 class="text-center font-weight-bold">THỐNG KÊ</h2><hr>
+				<div class="row">
+					<div class="d-flex col">
+						<div class="w-30 bg-success p-5 mr-2 text-white">
+							<p>Số lượng đơn hàng theo tháng</p>
+							<?php
+								include "connect.php";
+								$sql_count_order_by_month ="SELECT COUNT(*) as SL ,MONTH(NgayDH) as Thang 
+															FROM `dathang` GROUP BY MONTH(NgayDH)";
+								$result = mysqli_query($connect,$sql_count_order_by_month);
+								while($row = mysqli_fetch_array($result)){
+									echo "Tháng"." ".$row['Thang'].": ".$row['SL']."<br>";
+
+								}
+								mysqli_free_result($result);
+
+							?>
+						</div>
+						<div class="w-20 bg-warning p-5">
+							<p>Doanh Thu</p>
+						</div>
+						<div class="w-50 bg-warning p-5 ml-2">
+							<p>Sản Phẩm:</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		

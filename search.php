@@ -25,13 +25,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">
 				<h4>Kết quả cần tìm:</h4>
 				<div class="d-flex justify-content-between flex-wrap" id="page-1">
 					<?php
 						if (isset($_POST['search'])) {
 							$search = mysqli_real_escape_string($connect,$_POST['input_search']);
-							$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`hinh` FROM `hanghoa` WHERE `TenHH` LIKE '%$search%'";
+							$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `TenHH` LIKE '%$search%'";
 							$result = mysqli_query($connect,$sql);
 							if(mysqli_num_rows($result)>0){
 								while ($row= mysqli_fetch_array($result)) {
@@ -39,8 +38,9 @@
 									$name_product = $row['TenHH'];
 									$price = number_format($row['Gia']);
 									$img_product = $row['hinh'];
+									$quantity = $row['SoLuongHang'];
 								?>
-								<div class="col-md-4 col-sm-6">	
+								<div class="col-md-3 col-sm-6">	
 									<div class="card shadow" style="margin-bottom: 30px;">
 										<div class="inner">
 											<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
@@ -60,7 +60,15 @@
 												</div>
 												
 											</div>
-											<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success mt-2">Buy now.</a>
+											<?php
+												if($quantity == 0){
+													echo "<button class='btn btn-danger mt-2'>Tạm hết hàng</button>";
+												}else{
+													
+													echo '<a href="info_product.php?id='.$id.'" class="btn btn-success mt-2">Buy now.</a>';
+								
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -77,7 +85,7 @@
 						mysqli_close($connect);
 					?>
 				</div>
-			</div>
+			
 		</div>
 		<!-- Footer -->
 		<div class="row">

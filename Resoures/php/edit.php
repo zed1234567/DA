@@ -26,7 +26,7 @@
 						<?php include 'admin_nav.php';?>
 					</div>
 					<div class="col-md-10">
-						<h1 class="text-center font-weight-bold">Edit Product</h1>
+						<hr><h3 class="text-center font-weight-bold">Edit Product</h3><hr>
 						<form enctype="multipart/form-data" method="post">
 							<div class="row">
 								<div class="col-6">

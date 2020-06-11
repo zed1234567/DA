@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="d-flex justify-content-between">
-					<h3>ĐIỆN THOẠI NỔI BẬT NHẤT</h3>
+					<h3>LAPTOP NỔI BẬT NHẤT</h3>
 
 					<?php include "nav_filter.php";?>
 					
@@ -39,59 +39,10 @@
 				<hr>
 			</div>
 		</div>
-		<!-- <div class="row">
-				<?php
-					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT'";
-					$result = mysqli_query($connect,$sql);
-					while ($row= mysqli_fetch_array($result)) {
-						$id = $row['MSHH'];
-						$name_product = $row['TenHH'];
-						$price = number_format($row['Gia']);
-						$img_product = $row['hinh'];
-						$quantity = $row['SoLuongHang'];
-					?>
-							<div class="col-md-3 col-sm-6">	
-								<div class="card shadow" style="margin-bottom: 30px;">
-									<div class="inner">
-										<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
-									</div>
-									<div class="card-body">
-										<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
-										<div class="card-text">
-											<?php echo $price." VND"?><br>
-
-											<div class="product-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-											</div>
-											
-										</div>
-										<?php 
-											if($quantity == 0){
-												echo "<button class='btn btn-danger mt-2'>Tạm hết hàng</button>";
-											}else{
-												?>
-												<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success mt-2">Buy now.</a>
-												<?php
-											}
-										
-										?>
-									</div>
-								</div>
-							</div>
-
-					<?php
-					}
-					mysqli_free_result($result);
-					
-				?>
-		</div> -->
+		
 		<div class="row">
 		<?php
-			$type="DT";
+			$type="MT";
 			showProductByType($type);
 		?>
 		</div>

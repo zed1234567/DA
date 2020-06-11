@@ -9,16 +9,16 @@
 			<a href="#showall" data-toggle=collapse class="dropdown-toggle">Show All</a>
 			<ul class="collapse list-unstyled" id="showall">
 				<li class="li-custom">
-					<a href="showallproduct.php">--Product</a>
+					<a href="showallproduct.php">Product</a>
 				</li>
 				<li class="li-custom">
-					<a href="showallmember.php">--Member</a>
+					<a href="showallmember.php">Member</a>
 				</li>
 				<li class="li-custom">
-					<a href="showallcustomer.php">--Customer</a>
+					<a href="showallcustomer.php">Customer</a>
 				</li>
 				<li class="li-custom">
-					<a href="#">--Order</a>
+					<a href="detailorder.php">Order</a>
 				</li>
 			</ul>
 		</li>
@@ -26,10 +26,13 @@
 			<a href="#addmenu" data-toggle="collapse" class="dropdown-toggle" aria-expanded="false">Add</a>
 			<ul class="collapse list-unstyled" id="addmenu">
 				<li class="li-custom">
-					<a href="add.php">--Product</a>
+					<a href="add.php">Product</a>
 				</li>
 				<li class="li-custom">
-					<a href="add_member.php">--Member</a>
+					<a href="add_member.php">Member</a>
+				</li>
+				<li class="li-custom">
+					<a href="add_group.php">Group</a>
 				</li>
 			</ul>
 		</li>

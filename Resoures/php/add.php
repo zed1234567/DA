@@ -21,8 +21,8 @@
 				<?php include 'admin_nav.php';?>
 			</div>
 			<div class="col-md-10">
-				<h1 class="text-center font-weight-bold">Add Product</h1>
-				<form enctype="multipart/form-data" class="was-validated" method="post">
+				<hr><h3 class="text-center font-weight-bold">Add Product</h3><hr>
+				<form enctype="multipart/form-data" action=""  method="post">
 					
 					<div class="row">
 						<div class="col-6">
@@ -55,7 +55,18 @@
 
 					<div class="form-group">
 						<label>Ma Nhom:</label>
-						<input type="text" name="mnhom" class="form-control" placeholder="Nhap Ma Nhom" required>
+						<?php
+							include "connect.php";
+							$sql_MN = "SELECT `MaNhom` FROM `nhomhanghoa`";
+							$result = mysqli_query($connect,$sql_MN);
+							echo '<select name="mnhom" class="custom-select">';
+							echo '<option value="" selected disabled>Chọn mã nhóm</option>';
+							while($row = mysqli_fetch_array($result)){
+								echo '<option value="'.$row['MaNhom'].'">'.$row['MaNhom'].'</option>';
+							}
+							echo '</select>';
+						?>
+						
 						<div class="invalid-feedback">Please fill out this field.</div>
 					</div>
 

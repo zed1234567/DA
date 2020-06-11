@@ -27,7 +27,7 @@
 						<strong><?php echo $_GET['message'];?></strong>
 					</div>
 				<?php } ?>
-				<h1 class="text-center font-weight-bold">Add Member</h1>
+				<hr><h3 class="text-center font-weight-bold">Add Member</h3><hr>
 				<form method="post">
 					<div class="row">
 						<div class="col-6">

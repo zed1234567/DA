@@ -27,7 +27,7 @@
 				$sql = "SELECT * FROM `nhanvien`";
 				$result = mysqli_query($connect,$sql);
 				?>
-				<h3 style="text-align: center;">Member</h3>
+				<hr><h3 style="text-align: center;">Member</h3><hr>
 				<table class="table table-striped">
 					<tr>
 						<th>MSNV</th>

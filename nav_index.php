@@ -43,10 +43,10 @@
 							<a href="phone.php" class="nav-link text-center">PHONE</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link text-center">LAPTOP</a>
+							<a href="laptop.php" class="nav-link text-center">LAPTOP</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link text-center">TABLET</a>
+							<a href="tablet.php" class="nav-link text-center">TABLET</a>
 						</li>
 						<li class="nav-item">
 							<a href="buy_product.php" class="nav-link text-center"><i class="fas fa-cart-arrow-down"></i><span class="notice">
@@ -67,6 +67,7 @@
 
 							?>
 								<button type="button" class="btn" id="btn-login" data-target="#myModal" data-toggle="modal"><i class="far fa-user"></i></button>
+								
 								<div class="modal fade" id="myModal">
 									<div class="modal-dialog">
 										<div class="modal-content">
