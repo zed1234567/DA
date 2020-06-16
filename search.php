@@ -25,7 +25,11 @@
 			</div>
 		</div>
 		<div class="row">
-				<h4>Kết quả cần tìm:</h4>
+			<div class="col">
+				<h3>Kết quả cần tìm:</h3><hr>
+			</div>
+		</div>
+		<div class="row">
 				<div class="d-flex justify-content-between flex-wrap" id="page-1">
 					<?php
 						if (isset($_POST['search'])) {
@@ -88,15 +92,6 @@
 			
 		</div>
 		<!-- Footer -->
-		<div class="row">
-			<div class="col">
-				<ul class="pagination justify-content-center" style="margin: 20px 0;">
-					<li class="page-item"><a class="page-link" href="#page-1">1</a></li>
-					<li class="page-item"><a  class="page-link" href="#page-2">2</a></li>
-					<li class="page-item"><a class="page-link" href="">3</a></li>
-				</ul>
-			</div>
-		</div>
 		<footer>
 			<?php include 'footer.php';?>
 		</footer>

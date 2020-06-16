@@ -30,7 +30,10 @@
 				$sql = "SELECT * FROM `hanghoa`";
 				$result = mysqli_query($connect,$sql);
 				?>
-				<hr><h3 style="text-align: center;">Product</h3><hr>
+				<div class="sticky-top text-center bg-light">
+					<hr><h3>Product</h3><hr>
+				</div>
+				
 				<table class="table table-striped">
 					<tr>
 						<th>MSHH</th>

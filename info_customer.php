@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tiki</title>
+	<title>Canvas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="Resoures/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">

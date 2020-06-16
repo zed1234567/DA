@@ -28,7 +28,9 @@
 				$sql = "SELECT * FROM `dathang`";
 				$result = mysqli_query($connect,$sql);
 				?>
-				<hr><h3 style="text-align: center;">Order</h3><hr>
+				<div class="sticky-top text-center bg-light">
+					<hr><h3>Order</h3><hr>
+				</div>
 				<table class="table ">
 					<tr>
 						<th>SoDonDH</th>

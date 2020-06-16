@@ -1,12 +1,15 @@
 <?php 
 	session_start();
 	include 'Resoures/php/connect.php';	
+	function alertMess($msg){
+		echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tiki</title>
+	<title>Shopping Cart</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="Resoures/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
@@ -184,6 +187,8 @@
 
 							if($_POST['sl'] > $result['SoLuongHang']){
 
+								$msg = "Sản phẩm hiện tại không đủ số lượng";
+								alertMess($msg);
 								//set quantity = max quantity in database
 								$value['quantity'] = $result['SoLuongHang'];
 								echo '<meta http-equiv="refresh" content="0">';
@@ -205,36 +210,6 @@
 					}
 				}
 
-				//info customer form shopping cart 
-				// if(isset($_POST['submit'])){
-				// 	$name_customer = mysqli_real_escape_string($connect,$_POST['user']);
-				// 	$phone_customer = mysqli_real_escape_string($connect,$_POST['phone']);
-				// 	$address_customer = mysqli_real_escape_string($connect,$_POST['address']);
-				// 	//random id
-				// 	$id_customer = $id_order = rand(1,9999);
-					
-				// 	$sql_insert_customer = "INSERT INTO `khachhang`(`MSKH`, `HoTenKH`, `DiaChi`, `SDT`) VALUES('$id_customer','$name_customer','$address_customer','$phone_customer')";
-				// 	mysqli_query($connect,$sql_insert_customer);
-					
-				// 	$id_who_sell = mysqli_query($connect,"SELECT `MSNV` FROM `nhanvien` WHERE `ChucVu` = 'Ban Hang' LIMIT 1");
-				// 	$row=mysqli_fetch_array($id_who_sell);
-				// 	$MSNV= $row['MSNV'];
-				// 	mysqli_free_result($id_who_sell);
-
-				// 	$sql_insert_order = "INSERT INTO `dathang`(`SoDonDH`, `MSKH`, `MSNV`, `TrangThai`) VALUES('$id_order','$id_customer','$MSNV','Da Nhan')";
-				// 	mysqli_query($connect,$sql_insert_order);
-					
-				// 	foreach($_SESSION['shopping_cart'] as $key => $value){
-						
-				// 		$quantity = $value['quantity'];
-				// 		$price = $value['price'];
-				// 		$sql_insert_detail_order = "INSERT INTO `chitietdathang`(`SoDonDH`, `MSHH`, `SoLuong`, `GiaDatHang`) VALUES('$id_order','$key','$quantity','$price')";
-				// 		mysqli_query($connect,$sql_insert_detail_order);
-		
-				// 	}
-				// 	echo "Thanh Cong";
-				
-				// }
 
 
 			?>

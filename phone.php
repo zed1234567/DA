@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tiki</title>
+	<title>Phone</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="Resoures/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
@@ -30,87 +30,158 @@
 
 		<div class="row">
 			<div class="col">
+				<hr>
 				<div class="d-flex justify-content-between">
-					<h3>ĐIỆN THOẠI NỔI BẬT NHẤT</h3>
+					<h3>ĐIỆN THOẠI NỔI BẬT</h3>
 
-					<?php include "nav_filter.php";?>
+                    <form action="" method="post">
+                        <div class="form-row">
+
+                            <div class="col">
+                                <select class="custom-select" name="brand" id="brand" onchange="filterProduct()">
+
+                                    <option value="" selected disabled>Thương hiệu</option>
+                                    <option value="SAMSUNG" <?php if(isset($_POST['brand']) && $_POST['brand']=='SAMSUNG'){echo "selected";}?>>SAMSUNG</option>
+                                    <option value="IPHONE" <?php if(isset($_POST['brand']) && $_POST['brand']=='IPHONE'){echo "selected";}?>>IPHONE</option>
+                                    <option value="SONY" <?php if(isset($_POST['brand']) && $_POST['brand']=='SONY'){echo "selected";}?>>SONY</option>
+                                    
+                                </select>
+                            </div>
+
+                            <div class="col">
+                                <select class="custom-select" name="sort" id="sort" onchange="filterProduct()">
+
+                                    <option value="" selected disabled>Sắp xếp</option>
+                                    <option value="ASC" <?php if(isset($_POST['sort']) && $_POST['sort']=='ASC'){echo "selected";}?>>Giá tăng dần</option>
+                                    <option value="DESC" <?php if(isset($_POST['sort']) && $_POST['sort']=='DESC'){echo "selected";}?>>Giá giảm dần</option>
+                                    
+                                </select>
+                            </div>
+
+                        </div>
+                        
+                        <input type="hidden" name="select" value="DT" id="select">
+                    </form>
 					
 				</div>
 				<hr>
 			</div>
 		</div>
-		<!-- <div class="row">
-				<?php
-					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `MaNhom`='DT'";
-					$result = mysqli_query($connect,$sql);
-					while ($row= mysqli_fetch_array($result)) {
-						$id = $row['MSHH'];
-						$name_product = $row['TenHH'];
-						$price = number_format($row['Gia']);
-						$img_product = $row['hinh'];
-						$quantity = $row['SoLuongHang'];
-					?>
-							<div class="col-md-3 col-sm-6">	
-								<div class="card shadow" style="margin-bottom: 30px;">
-									<div class="inner">
-										<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
-									</div>
-									<div class="card-body">
-										<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
-										<div class="card-text">
-											<?php echo $price." VND"?><br>
 
-											<div class="product-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-											</div>
-											
-										</div>
-										<?php 
-											if($quantity == 0){
-												echo "<button class='btn btn-danger mt-2'>Tạm hết hàng</button>";
-											}else{
-												?>
-												<a href="info_product.php?id=<?php echo $id;?>" class="btn btn-success mt-2">Buy now.</a>
-												<?php
-											}
-										
-										?>
-									</div>
-								</div>
-							</div>
+		<div class=row id="product">
+        <?php
+            if(isset($_GET['page']) && $_GET['page']!=''){
+                $page = $_GET['page'];
+            }else{
+                $page = 1;
+            }
+            //8 product in one page
+            $total_product_per_page = 8;
+            $offset = ($page-1) * $total_product_per_page;
 
-					<?php
-					}
-					mysqli_free_result($result);
-					
-				?>
-		</div> -->
-		<div class="row">
-		<?php
-			$type="DT";
-			showProductByType($type);
-		?>
-		</div>
-	
+            $sql_get_total_product = "SELECT COUNT(*) AS total FROM `hanghoa` WHERE `MaNhom`='DT'";
+            $total_product = mysqli_fetch_array(mysqli_query($connect,$sql_get_total_product));
+
+            //quantity of page
+            $total_page = ceil($total_product['total'] / $total_product_per_page);
+
+            $sql_per_page = "SELECT * FROM `hanghoa` WHERE `MaNhom`='DT' LIMIT $offset, $total_product_per_page";
+            $result = mysqli_query($connect,$sql_per_page) or die( printf("Error: %s\n", mysqli_error($connect)));;
+            while($row = mysqli_fetch_array($result)){
+                $id = $row['MSHH'];
+                $name_product = $row['TenHH'];
+                $price = number_format($row['Gia']);
+                $img_product = $row['hinh'];
+				$quantity = $row['SoLuongHang'];
+				
+				if($quantity == 0){
+					$msg="(Tạm hết hàng)";
+				}else{
+					$msg="";
+				}
+
+                ?>
+                <div class="col-md-3 col-sm-6">	
+                    <div class="card shadow" style="margin-bottom: 30px;">
+                        <div class="inner">
+                            <img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-size: 1.3em">
+                            	<?php echo $name_product."  "?>
+                            	<small class="text-danger"><?php echo $msg?></small>
+                            </h4>
+                            <div class="card-text">
+                                <?php echo $price." VND"?><br>
+								
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                
+                            </div>
+                            <?php 
+                                if($quantity != 0){
+                                 
+                                    echo '<a href="info_product.php?id='.$id.'" class="mt-2 stretched-link"></a>';
+                                  
+                                }
+                            
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+			}
+			mysqli_close($connect);
+        
+        ?>
+            <div class="col-12">
+                <div class="row">
+                    <ul class="col pagination justify-content-center" style="margin: 20px 0;">
+                        <?php
+                            for($num_page = 1; $num_page <= $total_page; $num_page++){
+                                if($num_page == $page ){
+                                    echo '<li class="page-item active"><a class="page-link" href="phone.php?page='.$num_page.'">'.$num_page.'</a></li>';
+                                }else{
+                                    echo '<li class="page-item "><a class="page-link" href="phone.php?page='.$num_page.'">'.$num_page.'</a></li>';
+                                }
+                            }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
 		<!-- Footer -->
-		<div class="row">
-			<div class="col">
-				<ul class="pagination justify-content-center" style="margin: 20px 0;">
-					<li class="page-item"><a class="page-link" href="#page-1">1</a></li>
-					<li class="page-item"><a  class="page-link" href="#page-2">2</a></li>
-					<li class="page-item"><a class="page-link" href="">3</a></li>
-				</ul>
-			</div>
-		</div>
+		
 		<footer>
 			<?php include 'footer.php';?>
 		</footer>
 		<!-- End-footer -->
 	</div>
+    <script>
+        function filterProduct(){
+            
+            var brand = document.getElementById("brand").value;
+            var sort = document.getElementById("sort").value;
+            var type = document.getElementById("select").value;
+           
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                   document.getElementById("product").innerHTML = this.responseText;
+                }
+            };
+
+            request.open("POST","brand.php", true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("brand="+brand+"&sort="+sort+"&select="+type);
+        }
+    </script>
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

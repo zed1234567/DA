@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tiki</title>
+	<title>Laptop</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="Resoures/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
@@ -30,6 +30,7 @@
 
 		<div class="row">
 			<div class="col">
+				<hr>
 				<div class="d-flex justify-content-between">
 					<h3>LAPTOP NỔI BẬT NHẤT</h3>
 
@@ -39,21 +40,93 @@
 				<hr>
 			</div>
 		</div>
-		
-		<div class="row">
-		<?php
-			$type="MT";
-			showProductByType($type);
-		?>
-		</div>
-	
+
+		<div class=row id="product">
+        <?php
+            if(isset($_GET['page']) && $_GET['page']!=''){
+                $page = $_GET['page'];
+            }else{
+                $page = 1;
+            }
+            //8 product in one page
+            $total_product_per_page = 8;
+            $offset = ($page-1) * $total_product_per_page;
+
+            $sql_get_total_product = "SELECT COUNT(*) AS total FROM `hanghoa` WHERE `MaNhom`='MT'";
+            $total_product = mysqli_fetch_array(mysqli_query($connect,$sql_get_total_product));
+
+            //quantity of page
+            $total_page = ceil($total_product['total'] / $total_product_per_page);
+
+            $sql_per_page = "SELECT * FROM `hanghoa` WHERE `MaNhom`='MT' LIMIT $offset, $total_product_per_page";
+            $result = mysqli_query($connect,$sql_per_page);
+            while($row = mysqli_fetch_array($result)){
+                $id = $row['MSHH'];
+                $name_product = $row['TenHH'];
+                $price = number_format($row['Gia']);
+                $img_product = $row['hinh'];
+				$quantity = $row['SoLuongHang'];
+				
+				if($quantity == 0){
+					$msg="(Tạm hết hàng)";
+				}else{
+					$msg="";
+				}
+
+                ?>
+                <div class="col-md-3 col-sm-6">	
+                    <div class="card shadow" style="margin-bottom: 30px;">
+                        <div class="inner">
+                            <img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-size: 1.3em">
+                            	<?php echo $name_product."  "?>
+                            	<small class="text-danger"><?php echo $msg?></small>
+                            </h4>
+                            <div class="card-text">
+                                <?php echo $price." VND"?><br>
+								
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                
+                            </div>
+                            <?php 
+                                if($quantity != 0){
+                                 
+                                    echo '<a href="info_product.php?id='.$id.'" class="mt-2 stretched-link"></a>';
+                                  
+                                }
+                            
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+			}
+			mysqli_close($connect);
+        
+        ?>
+        </div>
+
 		<!-- Footer -->
 		<div class="row">
 			<div class="col">
 				<ul class="pagination justify-content-center" style="margin: 20px 0;">
-					<li class="page-item"><a class="page-link" href="#page-1">1</a></li>
-					<li class="page-item"><a  class="page-link" href="#page-2">2</a></li>
-					<li class="page-item"><a class="page-link" href="">3</a></li>
+                    <?php
+                        for($num_page = 1; $num_page <= $total_page; $num_page++){
+                            if($num_page == $page ){
+                                echo '<li class="page-item active"><a class="page-link" href="laptop.php?page='.$num_page.'">'.$num_page.'</a></li>';
+                            }else{
+                                echo '<li class="page-item "><a class="page-link" href="laptop.php?page='.$num_page.'">'.$num_page.'</a></li>';
+                            }
+                        }
+                    ?>
 				</ul>
 			</div>
 		</div>
