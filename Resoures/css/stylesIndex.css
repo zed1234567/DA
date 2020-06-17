@@ -131,6 +131,14 @@ footer{
 .inner{
     overflow: hidden;
 }
+
+.inner:hover img{
+	transform:  scale(1.1);
+}
+
+.inner img{
+	transition: all 1.5s ease;
+}
  
 .card img{
     transition: all 1.5s ease;
@@ -164,6 +172,7 @@ footer{
 	right: 50px;
 	bottom: 150px;
 	z-index: 99;
+	border-radius: 50%;
 	
 }
 

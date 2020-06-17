@@ -28,16 +28,16 @@
 				$result = mysqli_query($connect,$sql);
 				?>
 				<div class="sticky-top text-center bg-light">
-					<hr><h3>Member</h3><hr>
+					<hr><h3>Nhân Viên</h3><hr>
 				</div>
-				<table class="table table-striped">
+				<table class="table table-striped text-center">
 					<tr>
-						<th>MSNV</th>
-						<th>Ho Ten NV</th>
-						<th>Chuc Vu</th>
-						<th>Dia Chi</th>
-						<th>SDT</th>
-                        <th></th>
+						<th>Mã số</th>
+						<th>Họ Tên</th>
+						<th>Chức Vụ</th>
+						<th>Địa Chỉ</th>
+						<th>Số Điện Thoại</th>
+                        <th>Thao Tác</th>
 					</tr>
 					<?php
 						while($row = mysqli_fetch_array($result)){
@@ -48,8 +48,8 @@
 							echo "<td>".$row['DiaChi']."</td>";
                             echo "<td>".$row['SDT']."</td>";
 							echo "<td>
-									<a class='btn btn-secondary' href='editmember.php?MSNV=".$row['MSNV']."'>Edit</a>
-									<a class='btn btn-danger' href='deletemember.php?MSNV=".$row['MSNV']."'>Delete</a>
+									<a class='btn btn-secondary' href='editmember.php?MSNV=".$row['MSNV']."'><i class='far fa-edit'></i></a>
+									<a class='btn btn-danger' href='deletemember.php?MSNV=".$row['MSNV']."'><i class='far fa-trash-alt'></i></a>
 								 </td>";
 							echo "</tr>";
 						}
@@ -60,6 +60,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

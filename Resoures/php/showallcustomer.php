@@ -29,14 +29,14 @@
 				$result = mysqli_query($connect,$sql);
 				?>
 				<div class="sticky-top text-center bg-light">
-					<hr><h3>Customer</h3><hr>
+					<hr><h3>Khách Hàng</h3><hr>
 				</div>
-				<table class="table table-striped">
+				<table class="table table-striped text-center">
 					<tr>
-						<th>MSKH</th>
-						<th>Ho Ten KH</th>
-						<th>Dia Chi</th>
-						<th>SDT</th>
+						<th>Mã Số</th>
+						<th>Họ Tên</th>
+						<th>Địa Chỉ</th>
+						<th>Số Điện Thoại</th>
 					</tr>
 					<?php
 						while($row = mysqli_fetch_array($result)){

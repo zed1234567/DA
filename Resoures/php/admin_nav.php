@@ -41,6 +41,6 @@
 	<div class="d-flex justify-content-around">
 		
 		<a href="../../../Do_an_web/index.php" class="btn btn-primary">HOME</a>
-		<a href="logout.php" class="btn btn-danger">THOAT</a>
+		<a href="logout.php" class="btn btn-danger">THOÁT</a>
 	</div>
 </nav>

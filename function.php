@@ -44,7 +44,7 @@ function showProductByType($type){
 
                         if($quantity != 0){
                                  
-                            echo '<a href="info_product.php?id='.$id.'" class="mt-2 stretched-link"></a>';
+                            $html.='<a href="info_product.php?id='.$id.'" class="mt-2 stretched-link"></a>';
                           
                         }
                         

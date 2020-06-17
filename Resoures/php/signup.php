@@ -9,7 +9,7 @@
 		$result = mysqli_query($connect,$sql);
 		if(mysqli_num_rows($result)>0){
 			mysqli_free_result($result);
-			header("Location: signup_form.php?message=Gmail+exits");
+			header("Location: signup_form.php?message=Gmail đã tồn tại");
 		}else
 		{
 			$hash_pwd = password_hash($pwd,PASSWORD_DEFAULT);
@@ -20,7 +20,7 @@
 				header("Location: ../../../../../Do_an_web/index.php?message=Success+please+login");
 			}else
 			{
-				header("Location: signup_form.php?message=faild ");
+				header("Location: signup_form.php?message=Thất bại!");
 			}
 			mysqli_free_result($sql_update);
 

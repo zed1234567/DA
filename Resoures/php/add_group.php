@@ -21,7 +21,7 @@
 				<?php include 'admin_nav.php';?>
 			</div>
 			<div class="col-md-10">
-				<hr><h3 class="text-center font-weight-bold">Add Group</h3><hr>
+				<hr><h3 class="text-center font-weight-bold">Thêm Nhóm Sản Phẩm</h3><hr>
 				<form action="" method="post">
 					
 					<div class="row">
@@ -58,7 +58,9 @@
                 $sql = "INSERT INTO `nhomhanghoa` (`MaNhom`, `TenNhom`) VALUES ('$maNhom','$tenNhom')";
                 if(mysqli_query($connect,$sql)){
                     echo '<script type="text/javascript">alert("Đã Thêm")</script>';
-                }
+                }else{
+					echo '<script type="text/javascript">alert("Lỗi")</script>';
+				}
 				
 			}
 			mysqli_close($connect);

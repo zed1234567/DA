@@ -29,15 +29,15 @@
 				$result = mysqli_query($connect,$sql);
 				?>
 				<div class="sticky-top text-center bg-light">
-					<hr><h3>Order</h3><hr>
+					<hr><h3>Đơn Đặt Hàng</h3><hr>
 				</div>
-				<table class="table ">
+				<table class="table text-center">
 					<tr>
-						<th>SoDonDH</th>
-						<th>MSKH</th>
-						<th>MSNV</th>
-						<th>NgayDH</th>
-                        <th>TrangThai</th>
+						<th>Số Hóa Đơn</th>
+						<th>Mã Khách Hàng</th>
+						<th>Mã Nhân Viên</th>
+						<th>Ngày Đặt</th>
+                        <th>Trạng Thái</th>
                         <th></th>
 					</tr>
 					<?php

@@ -41,9 +41,15 @@
                                 <select class="custom-select" name="brand" id="brand" onchange="filterProduct()">
 
                                     <option value="" selected disabled>Thương hiệu</option>
-                                    <option value="SAMSUNG" <?php if(isset($_POST['brand']) && $_POST['brand']=='SAMSUNG'){echo "selected";}?>>SAMSUNG</option>
-                                    <option value="IPHONE" <?php if(isset($_POST['brand']) && $_POST['brand']=='IPHONE'){echo "selected";}?>>IPHONE</option>
-                                    <option value="SONY" <?php if(isset($_POST['brand']) && $_POST['brand']=='SONY'){echo "selected";}?>>SONY</option>
+                                    <?php
+                                        $sql = "SELECT DISTINCT `ThuongHieu` FROM `hanghoa` WHERE `MaNhom`='DT'";
+                                        $result = mysqli_query($connect,$sql);
+                                        while($row = mysqli_fetch_array($result)){
+                                            
+                                            echo '<option value="'.strtoupper($row['ThuongHieu']).'">'.strtoupper($row['ThuongHieu']).'</option>';
+                                        }
+                                    ?>
+                                
                                     
                                 </select>
                             </div>
@@ -52,8 +58,8 @@
                                 <select class="custom-select" name="sort" id="sort" onchange="filterProduct()">
 
                                     <option value="" selected disabled>Sắp xếp</option>
-                                    <option value="ASC" <?php if(isset($_POST['sort']) && $_POST['sort']=='ASC'){echo "selected";}?>>Giá tăng dần</option>
-                                    <option value="DESC" <?php if(isset($_POST['sort']) && $_POST['sort']=='DESC'){echo "selected";}?>>Giá giảm dần</option>
+                                    <option value="ASC">Giá tăng dần</option>
+                                    <option value="DESC">Giá giảm dần</option>
                                     
                                 </select>
                             </div>

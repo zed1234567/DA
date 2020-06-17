@@ -86,7 +86,12 @@
             $phone = mysqli_real_escape_string($connect,$_POST['phone']);
             $sql_update = "UPDATE `nhanvien` SET `MSNV`='$MSNV',`HoTenNV`='$name',`ChucVu`='$position',`DiaChi`='$address',`SDT`='$phone' WHERE MSNV='$id'";
             if(mysqli_query($connect,$sql_update)){
-                header("Location: editmember.php?MSNV=$id&message=Edit+susses");
+                echo '<script type="text/javascript">alert("Đã Sữa")</script>';
+                echo '<meta http-equiv="refresh" content="0">';
+
+            }else{
+                echo '<script type="text/javascript">alert("Lỗi")</script>';
+                echo '<meta http-equiv="refresh" content="0">';
             }
             
         }

@@ -8,14 +8,15 @@
 		$sql = "SELECT * FROM `users` WHERE `Gmail`='$gmail' LIMIT 1";
 		$result = mysqli_query($connect,$sql);
 		if(mysqli_num_rows($result)<=0){
-			header("Location: ".$_SERVER['SCRIPT_NAME']."?message=faild+gmail");
+			header("Location: ".$_SERVER['SCRIPT_NAME']."?message=faild");
 			die();
 
 		}
 		else{
 			while ($row = mysqli_fetch_array($result)) {
 				if(!password_verify($pwd,$row['pwd'])){
-					header("Location: ".$_SERVER['SCRIPT_NAME']."?message=faild+password");
+					header("Location: ".$_SERVER['SCRIPT_NAME']."?message=faild");
+					die();
 				}
 				else if(password_verify($pwd,$row['pwd']) && $row['User_role']==1){
 					$_SESSION["admin"]=1;
@@ -27,7 +28,7 @@
 					$_SESSION['ID_User'] = $row['ID_User'];
 					$_SESSION['User_Name'] = $row['User_Name'];
 					$_SESSION['Gmail'] = $row['Gmail'];
-					header("Location: ".$_SERVER['SCRIPT_NAME']."?message=login+sussces");
+					header("Location: ../../../../../Do_an_web/index.php?message=login+sussces");
 					// header("Location: ../../../../../Do_an_web/index.php?message=login+sussces");
 					die();
 				
