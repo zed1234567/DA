@@ -24,9 +24,25 @@
 
 				if(isset($_POST['brand'])){
 					$brand_name = mysqli_real_escape_string($connect,$_POST['brand']);
-					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `TenHH` Like '%$brand_name%' AND `MaNhom`='$type'";
+					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `ThuongHieu`='$brand_name' AND `MaNhom`='$type'";
 				} else {
 					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `MaNhom`='$type' ";
+				}
+
+				if(isset($_POST['price']) && $_POST['price'] == '5000000'){
+					$sql.="AND `Gia` < 5000000";
+				}
+
+				if(isset($_POST['price']) && $_POST['price'] == '10000000'){
+					$sql.="AND (`Gia` BETWEEN 5000000 AND  10000000)";
+				}
+
+				if(isset($_POST['price']) && $_POST['price'] == '15000000'){
+					$sql.="AND (`Gia` BETWEEN 10000000 AND 15000000)";
+				}
+
+				if(isset($_POST['price']) && $_POST['price'] == '16000000'){
+					$sql.="AND `Gia` >= 16000000";
 				}
 
 				if(isset($_POST['sort']) && $_POST['sort']=="ASC"){
@@ -38,6 +54,7 @@
 				}
 			
 				$result = mysqli_query($connect,$sql) or die( printf("Error: %s\n", mysqli_error($connect)));
+
 				while ($row = mysqli_fetch_array($result)) {
 					$id = $row['MSHH'];
 					$name_product = $row['TenHH'];

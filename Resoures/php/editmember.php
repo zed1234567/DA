@@ -33,7 +33,7 @@
                                 <strong><?php echo $_GET['message'];?></strong>
                             </div>
                         <?php } ?>
-                        <hr><h3 class="text-center font-weight-bold">Edit Member <?php echo $row['HoTenNV']?></h3><hr>
+                        <hr><h3 class="text-center font-weight-bold">Điều Chỉnh Nhân Viên - <?php echo $row['HoTenNV']?></h3><hr>
                         <form method="post">
                             <div class="row">
                                 <div class="col-6">
@@ -86,7 +86,7 @@
             $phone = mysqli_real_escape_string($connect,$_POST['phone']);
             $sql_update = "UPDATE `nhanvien` SET `MSNV`='$MSNV',`HoTenNV`='$name',`ChucVu`='$position',`DiaChi`='$address',`SDT`='$phone' WHERE MSNV='$id'";
             if(mysqli_query($connect,$sql_update)){
-                echo '<script type="text/javascript">alert("Đã Sữa")</script>';
+                echo '<script type="text/javascript">alert("Đã Lưu")</script>';
                 echo '<meta http-equiv="refresh" content="0">';
 
             }else{

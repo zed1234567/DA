@@ -30,67 +30,73 @@
 			</div>
 		</div>
 		<div class="row">
-				<div class="d-flex justify-content-between flex-wrap" id="page-1">
-					<?php
-						if (isset($_POST['search'])) {
-							$search = mysqli_real_escape_string($connect,$_POST['input_search']);
-							$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `TenHH` LIKE '%$search%'";
-							$result = mysqli_query($connect,$sql);
-							if(mysqli_num_rows($result)>0){
-								while ($row= mysqli_fetch_array($result)) {
-									$id = $row['MSHH'];
-									$name_product = $row['TenHH'];
-									$price = number_format($row['Gia']);
-									$img_product = $row['hinh'];
-									$quantity = $row['SoLuongHang'];
-								?>
-								<div class="col-md-3 col-sm-6">	
-									<div class="card shadow" style="margin-bottom: 30px;">
-										<div class="inner">
-											<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 100%; height: 180px;">
+			<?php
+				if (isset($_POST['search'])) {
+					$search = mysqli_real_escape_string($connect,$_POST['input_search']);
+					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `TenHH` LIKE '%$search%'";
+					$result = mysqli_query($connect,$sql);
+					if(mysqli_num_rows($result)>0){
+						while ($row= mysqli_fetch_array($result)) {
+							$id = $row['MSHH'];
+							$name_product = $row['TenHH'];
+							$price = number_format($row['Gia']);
+							$img_product = $row['hinh'];
+							$quantity = $row['SoLuongHang'];
+
+							if($quantity == 0){
+								$msg="(Tạm hết hàng)";
+							}else{
+								$msg="";
+							}
+						?>
+						<div class="col-md-3 col-sm-6">	
+							<div class="card shadow" style="margin-bottom: 30px;">
+								<div class="inner d-flex justify-content-center pt-2">
+									<img src="Resoures/<?php echo $img_product?>" class="card-img-top" style="width: 200px; height: 200px;">
+								</div>
+								<div class="card-body">
+									<h4 class="card-title" style="font-size: 1.3em">
+										<?php echo $name_product."  "?>
+										<small class="text-danger"><?php echo $msg?></small>
+									</h4>
+									<div class="card-text">
+										<?php echo $price." VND"?><br>
+										
+										<div class="product-rating">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star-half-alt"></i>
 										</div>
 										
-										<div class="card-body">
-											<h4 class="card-title" style="font-size: 1.3em"><?php echo $name_product?></h4>
-											<div class="card-text">
-												<?php echo $price." VND"?><br>
-
-												<div class="product-rating">
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star-half-alt"></i>
-												</div>
-												
-											</div>
-											<?php
-												if($quantity == 0){
-													echo "<button class='btn btn-danger mt-2'>Tạm hết hàng</button>";
-												}else{
-													
-													echo '<a href="info_product.php?id='.$id.'" class="btn btn-success mt-2">Buy now.</a>';
-								
-												}
-											?>
-										</div>
 									</div>
+									<?php 
+										if($quantity != 0){
+										
+											echo '<a href="info_product.php?id='.$id.'" class="mt-2 stretched-link"></a>';
+										
+										}
+									
+									?>
 								</div>
+							</div>
+						</div>
 
-							<?php
-								}
-								mysqli_free_result($result);
-
-							}else{
-								echo "<h5>Không có sản phẩm cần tìm.</h5>";
-								
-							}
+					<?php
 						}
-						mysqli_close($connect);
-					?>
-				</div>
-			
+						mysqli_free_result($result);
+
+					}else{
+						echo "<h5>Không có sản phẩm cần tìm.</h5>";
+						
+					}
+				}
+				mysqli_close($connect);
+			?>
 		</div>
+			
+		
 		<!-- Footer -->
 		<footer>
 			<?php include 'footer.php';?>

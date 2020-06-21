@@ -20,9 +20,9 @@ function showProductByType($type){
         }
 
         $html='<div class="col-md-6 col-sm-12 col-lg-3">	
-                <div class="card shadow" style="margin-bottom: 30px;">
-                    <div class="inner">
-                        <img src="Resoures/'.$img_product.'" class="card-img-top" style="width: 100%; height: 180px;">
+                <div class="card shadow " style="margin-bottom: 30px;">
+                    <div class="inner d-flex justify-content-center pt-2">
+                        <img src="Resoures/'.$img_product.'" class="card-img-top" style="width: 200px; height: 200px;">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title" style="font-size: 1.3em">'.
@@ -64,6 +64,7 @@ function showProductByType($type){
 			
     
 }
+
 
 
 function alertMess($msg){

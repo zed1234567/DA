@@ -122,6 +122,18 @@ footer{
 	transition: .5s;
 }
 
+
+.footer-icon a i{
+	color: white;
+	font-size: 25px;
+}
+
+.footer-icon a:hover i {
+	color: #1ebba3;
+	transform: translateY(5px);
+	transition: all 1s;
+}
+
 /* btn-delete-product */
 .btn-delete:hover{
 	color: red;

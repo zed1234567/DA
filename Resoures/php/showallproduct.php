@@ -28,7 +28,7 @@
 				$result = mysqli_query($connect,$sql);
 				?>
 				<div class="sticky-top text-center bg-light">
-					<hr><h3>Product</h3><hr>
+					<hr><h3>Sản Phẩm</h3><hr>
 				</div>
 				
 				<table class="table table-striped text-center">

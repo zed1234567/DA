@@ -29,6 +29,8 @@
 						   <li data-target="#demo" data-slide-to="0" class="active"></li>
 						   <li data-target="#demo" data-slide-to="1"></li>
 						   <li data-target="#demo" data-slide-to="2"></li>
+						   <li data-target="#demo" data-slide-to="3"></li>
+						   <li data-target="#demo" data-slide-to="4"></li>
 						</ul>
 						  
 						  <!-- The slideshow -->
@@ -41,6 +43,12 @@
 						    </div>
 						    <div class="carousel-item">
 						      <img src="Resoures/img/carousel_3.png" >
+						    </div>
+							<div class="carousel-item">
+						      <img src="Resoures/img/carousel_4.png" >
+						    </div>
+							<div class="carousel-item">
+						      <img src="Resoures/img/carousel_8.png" >
 						    </div>
 						</div>
 						  
