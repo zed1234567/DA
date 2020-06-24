@@ -1,6 +1,7 @@
 <?php session_start();
 	if(!isset($_SESSION['admin'])){
 		header("Location: /../../../../Do_an_web/index.php");
+		die();
 	}else{
 
 	?>
@@ -73,7 +74,7 @@
 			$result = mysqli_query($connect,$sql_check);
 			
 			if(mysqli_num_rows($result)>0){
-				header("Location: add_member.php?message=Ma+da+co.");
+				echo '<script type="text/javascript">alert("Mã Nhân Viên Đac Có")</script>';
 			}else{
 				$sql ="INSERT INTO `nhanvien`(`MSNV`, `HoTenNV`, `ChucVu`, `DiaChi`, `SDT`) VALUES ('$maso_Nv','$hoten_Nv','$chucvu_Nv','$diachi_Nv','$sdt_Nv')";
 				if(mysqli_query($connect,$sql)){

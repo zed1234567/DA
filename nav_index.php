@@ -5,7 +5,7 @@
 				
 				<form class="form-inline mr-auto" action="search.php" method="post">
 					<div class="input-group">
-						<input type="text" class="form-control" name="input_search" placeholder="Search something..." required autocomplete="off" size="25">
+						<input type="text" class="form-control shadow-none" name="input_search" placeholder="Search something..." required autocomplete="off" size="25">
 						<div class="input-group-append">
 							<button type="submit" name="search" class="btn btn-success"><i class="fas fa-search"></i></button>
 						</div>
@@ -84,7 +84,7 @@
 																<span class="input-group-text"><i class="fa fa-paper-plane"></i></span>
 															</div>
 									
-															<input type="email" required name="Gmail" class="form-control" autocomplete="off" placeholder="Gmail">
+															<input type="email" required name="Gmail" class="form-control shadow-none" autocomplete="off" placeholder="Gmail">
 														</div>
 													</div>
 													<div class="form-group">
@@ -93,11 +93,11 @@
 																<span class="input-group-text"><i class="fa fa-lock"></i></span>
 															</div>
 														
-															<input type="password" name="pwd" required placeholder="Password" class="form-control">
+															<input type="password" name="pwd" required placeholder="Password" class="form-control shadow-none">
 														</div>
 													</div>
 													<div class="form-group">
-														<button type="submit" name="Login" class="btn btn-primary btn-block btn-lg" style="border-radius: 10px">Đăng Nhập</button>
+														<button type="submit" name="Login" class="btn btn-primary btn-block btn-lg shadow-none" style="border-radius: 10px">Đăng Nhập</button>
 													</div>
 													<div class="text-center">Bạn chưa có tài khoản? <a href="Resoures/php/signup_form.php">Đăng ký</a></div>
 												</form>

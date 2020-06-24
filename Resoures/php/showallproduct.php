@@ -44,6 +44,7 @@
 						<th>Thao Tác</th>
 					</tr>
 					<?php
+						$check ="'Are you sure'";
 						while($row = mysqli_fetch_array($result)){
 							echo "<tr>";
 							echo "<td>".$row['MSHH']."</td>";
@@ -56,7 +57,7 @@
 							echo "<td><img src='../".$row['hinh']."' height='100px' width='100px'></td>" ;
 							echo "<td>
 									<a class='btn btn-secondary' href='edit.php?MSHH=".$row['MSHH']."'><i class='far fa-edit'></i></a>
-									<a class='btn btn-danger' href='delete.php?MSHH=".$row['MSHH']."'><i class='far fa-trash-alt'></i></a>
+									<a class='btn btn-danger' onClick='return confirm($check)' href='delete.php?MSHH=".$row['MSHH']."'><i class='far fa-trash-alt'></i></a>
 								 </td>";
 							echo "</tr>";
 						}

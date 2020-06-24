@@ -19,7 +19,7 @@
 
  	<?php include "nav_index.php";?> 
 
-		<div style="margin-top: 90px;">
+		<div style="margin-top: 150px;">
 			<?php
 				if (!empty($_SESSION['shopping_cart'])) {
 				?>
@@ -147,7 +147,7 @@
 				<div class="d-flex justify-content-center mb-lg-5 h-70">
 					
 					<h3>Bạn chưa chọn sản phẩm nào!!</h3>
-					<a href="index.php" class="btn btn-danger ml-5">Tiếp tục mua sắm</a>
+					<a href="index.php" class="btn btn-danger ml-5 mb-lg-5">Tiếp tục mua sắm</a>
 				
 				</div>
 				
