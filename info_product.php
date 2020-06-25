@@ -38,7 +38,12 @@
 							<div class="row">
 								<div class="col-md-4 col-sm">
 									<div class="inner">
-										<img src="Resoures/<?php echo $product_img;?>" class="img-fluid mx-auto d-block" style="width: 400px;max-height: 400px;">
+										<img src="Resoures/<?php echo $product_img;?>" class="img-fluid mx-auto d-block" style="width: 400px;max-height: 400px;" id="myImg">
+									</div>
+									
+									<div class="myModalImg" id="myModalImg">
+										<span class="closeM" id="closeM">&times;</span>
+										<img src="Resoures/<?php echo $product_img;?>" id="img" class="modalContent">
 									</div>
 									
 								</div>
@@ -157,7 +162,19 @@
 		<!-- End-footer -->
 	</div>
 	<script type="text/javascript">
-		
+		var modal = document.getElementById("myModalImg");
+
+		var img = document.getElementById("myImg");
+		var modalImg = document.getElementById("img");
+		img.onclick = function() {
+			modal.style.display = "block";
+			modalImg.src=this.src;
+		}
+
+		var close = document.getElementById("closeM");
+		close.onclick = function() {
+			modal.style.display = "none";
+		}
 	</script>
 	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
