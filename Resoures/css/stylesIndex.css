@@ -79,6 +79,17 @@ button:focus{
 	line-height: .6rem;
 }
 
+@media screen and (max-width: 780px) {
+	.notice{
+		right: inherit;
+	}
+
+	#btn-login{
+		display: block;
+		margin: 0 auto;
+	}
+}
+
 /*--------------*/
 /*-----carousel---*/
 .carousel-inner img{
@@ -133,6 +144,12 @@ footer{
 	transform: translateY(5px);
 	transition: all 1s;
 }
+
+@media screen and (max-width: 780px){
+	.img-footer{
+		width: 75% !important;
+	}
+}
 /*--------------------*/
 /* btn-delete-product */
 .btn-delete:hover{
@@ -181,6 +198,11 @@ footer{
 
 .card:hover{
 	cursor: pointer;
+}
+
+.no-product{
+	height: 300px;
+	text-align: center;
 }
 /*--------------*/
 /*scroll button*/

@@ -1,6 +1,10 @@
 <?php 
 	session_start();
-	include 'Resoures/php/connect.php';	
+	if(!isset($_POST['search'])){
+		header("Location: index.php");
+		die();
+	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +35,7 @@
 		</div>
 		<div class="row">
 			<?php
+				include 'Resoures/php/connect.php';	
 				if (isset($_POST['search'])) {
 					$search = mysqli_real_escape_string($connect,$_POST['input_search']);
 					$sql = "SELECT `MSHH`,`TenHH`,`Gia`,`SoLuongHang`,`hinh` FROM `hanghoa` WHERE `TenHH` LIKE '%$search%'";
@@ -88,7 +93,11 @@
 						mysqli_free_result($result);
 
 					}else{
-						echo "<h5>Không có sản phẩm cần tìm.</h5>";
+						?>
+						<div class="col">
+							<p class="no-product text-success">Không có sản phầm phù hợp!</p>
+						</div>
+						<?php
 						
 					}
 				}

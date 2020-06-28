@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 *{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
+
 html{
 	height: 100%;
 }
@@ -18,7 +20,7 @@ body{
 }
 
 .signup-form{
-	width: 1000px;
+	width: 80%;
 	margin: 180px auto;
 	padding: 30px 30px;
 	background-color: white;
@@ -40,6 +42,7 @@ body{
 	border-bottom: 1px solid black;
 	font-family: 'Lato', sans-serif;
 	outline: none;
+	border-radius: 0px;
 }
 
 input:focus{
@@ -63,3 +66,5 @@ input:focus{
 	color: red;
 	text-align: center;
 }
+
+

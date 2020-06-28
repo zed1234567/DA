@@ -1,6 +1,10 @@
 <?php 
 	session_start();
-	include 'Resoures/php/connect.php';
+	if(!isset($_SESSION['User_Name'])){
+		header("Location: index.php");
+		die();
+	}else{
+		include 'Resoures/php/connect.php';
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +22,9 @@
 		
 		<?php include "nav_index.php"?>
 		<!-- END-NAV -->
-        <div style="margin-top: 90px">
+        <div style="margin-top: 150px">
         	<div class="row">
-        		<div class="col">
+        		<div class="col-md-6 col-sm-12">
         			<h4 class="text-center text-uppercase font-weight-bold font-italic">THÔNG TIN KHÁCH HÀNG</h4><hr>
         			<div class="d-flex justify-content-lg-between">
         				<div class="info-customer-left">
@@ -42,7 +46,7 @@
         				
         			</div>
         		</div>
-        		<div class="col">
+        		<div class="col-md-6 col-sm-12">
         			<h4 class="text-center text-uppercase font-weight-bold font-italic">ĐƠN HÀNG ĐÃ MUA</h4><hr>
 						<?php
 							$sql_order ="SELECT `SoDonDH`,`NgayDH`, `TrangThai` FROM `dathang` WHERE `MSKH`=".$_SESSION['ID_User'];
@@ -94,7 +98,7 @@
             
         </div>
 
-		
+		<button class="btn btn-success" id="scroll-btn" onclick="goTop();"><i class="fas fa-chevron-up"></i></button>
 		<footer>
 			<?php include 'footer.php';?>
 		</footer>
@@ -116,7 +120,6 @@
 		}
 
 		function goTop(){
-			document.body.scrollTop = 0;
 			document.documentElement.scrollTop =0;
 		}
 
@@ -127,3 +130,6 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php
+	}
+?>

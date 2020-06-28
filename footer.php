@@ -2,11 +2,11 @@
 <div class="row bg-dark d-flex justify-content-center align-content-center ">
 
 	<div class="col-md-3 col-sm-12 d-flex justify-content-center align-content-center">
-		<img src="Resoures/img/logo_2.png"  class="w-100 p-0">
+		<img src="Resoures/img/logo_2.png"  class="w-100 p-0 img-footer">
 	</div>
 
 	<div class="col-md-6 col-sm-12 p-5">
-			<ul class="d-flex menu-footer flex-md-column flex-sm-column flex-lg-row">
+			<ul class="d-flex menu-footer flex-sm-column flex-lg-row">
 				<li><a href="#">Chăm sóc khách hàng</a></li>
 				<li><a href="#">Điều khoản sử dụng</a></li>
 				<li><a href="#">Đổi trả sản phẩm</a></li>

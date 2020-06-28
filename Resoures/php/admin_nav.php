@@ -1,3 +1,10 @@
+<?php 
+	if(!isset($_SESSION['admin'])){
+		header("Location: /../../../../Do_an_web/index.php");
+		die();
+	}else{
+		
+	?>
 <nav id="sidebar">
 	<div class="sidebar-header">
 		<img src="../img/logo_2.png">
@@ -44,3 +51,6 @@
 		<a href="logout.php" class="btn btn-danger">THOÁT</a>
 	</div>
 </nav>
+<?php
+	}
+?>

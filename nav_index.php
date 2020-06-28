@@ -66,7 +66,7 @@
 								}else{
 
 							?>
-								<button type="button" class="btn" id="btn-login" data-target="#myModal" data-toggle="modal"><i class="far fa-user"></i></button>
+								<button type="button" class="btn shadow-none" id="btn-login" data-target="#myModal" data-toggle="modal"><i class="far fa-user"></i></button>
 								
 								<div class="modal fade" id="myModal">
 									<div class="modal-dialog">

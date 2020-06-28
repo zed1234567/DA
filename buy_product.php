@@ -25,7 +25,8 @@
 				?>
 				<div class="row">
 					
-					<div class="col-8">
+					<!-- THÔNG TIN CÁC SẢN PHẨM TRONG GIỎ HÀNG -->
+					<div class="col-md-8 col-sm-12">
 						<h4 class="text-center text-uppercase font-weight-bold font-italic">Giỏ hàng</h4><hr>
 						<table class="table table-responsive-md text-center table-borderless">
 							<tr>
@@ -66,7 +67,7 @@
 						?>	
 						</table>
 					</div>
-					<div class="col-4">
+					<div class="col-sm-12 col-md-4">
 						<h4 class="text-center text-uppercase font-weight-bold font-italic">Thanh Toán</h4>
 						<hr>
 
@@ -89,6 +90,9 @@
 						</div>
 
 						<hr>
+						<!--  KẾT THÚC THÔNG TIN CÁC SẢN PHẨM TRONG GIỎ HÀNG -->
+
+						<!-- FROM ĐIỀN THÔNG TIN CỦA KHÁCH HÀNG KHI MUA LIKE ĐỊA CHỈ SDT ... -->
 						<div class="row">
 							<div class="col text-center">
 								<button class="btn btn-success font-weight-bold" data-target="#form_pay" data-toggle="modal" id="button_pay"" onclick="checkLogin()">Tiến hành đặt hàng</button>
@@ -103,23 +107,35 @@
 
 											<div class="modal-body">
 												<?php
-													$sql_customer ="SELECT `HoTenKH`, `DiaChi`, `SDT` FROM `khachhang` WHERE `MSKH`=".$_SESSION['ID_User'];
-													$row = mysqli_fetch_array(mysqli_query($connect,$sql_customer));
+													if(isset($_SESSION['ID_User'])){
+														$sql_customer ="SELECT `HoTenKH`, `DiaChi`, `SDT` FROM `khachhang` WHERE `MSKH`=".$_SESSION['ID_User'];
+														$row = mysqli_fetch_array(mysqli_query($connect,$sql_customer));
+													}
 												?>
 												<form action="print_bill.php" method="post">
 													<div class="row">
 														<div class="col-6">
-															<input type="text" name="user" class="form-control" placeholder="Họ và Tên" value="<?php echo $row['HoTenKH'] ?>" required pattern="[A-Za-z ]{10,}" title="Nhap dung ho ten">
+															<input type="text" name="user" class="form-control" 
+																   placeholder="Họ và Tên" 
+																   value="<?php echo empty($row['HoTenKH']) ? "" : $row['HoTenKH'];?>"
+																   required pattern="[A-Za-z ]{10,}" title="Nhap dung ho ten">
 														</div>
 														<div class="col-6">
-															<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" value="<?php echo $row['SDT'] ?>" pattern="[0-9]{10}" title="10 so" required>
+															<input type="text" name="phone" class="form-control" 
+																   placeholder="Số điện thoại" 
+																   value="<?php echo empty($row['SDT']) ? "" : $row['SDT'];?>"
+																   pattern="[0-9]{10}" title="10 so" required>
 														</div>
 
 													</div>
 
 													<div class="row" style="padding-top: 16px;">
 														<div class="col">
-															<input type="text" name="address" class="form-control" value="<?php echo $row['DiaChi'] ?>" placeholder="Địa chỉ giao hàng" required pattern="[A-Za-z0-9 /]{10,}" title="Nhap dung dia chi">
+															<input type="text" name="address" class="form-control" 
+
+																   value="<?php echo empty($row['DiaChi']) ? "" : $row['DiaChi'];?>" 
+																   placeholder="Địa chỉ giao hàng" 
+																   required pattern="[A-Za-z0-9 /]{10,}" title="Nhap dung dia chi">
 														</div>
 													</div>
 
@@ -143,12 +159,12 @@
 			<?php	
 			}else{
 				?>
-
-				<div class="d-flex justify-content-center mb-lg-5 h-70">
-					
-					<h3>Bạn chưa chọn sản phẩm nào!!</h3>
-					<a href="index.php" class="btn btn-danger ml-5 mb-lg-5">Tiếp tục mua sắm</a>
-				
+				<!-- KHÔNG CÓ SẢN PHẨM NÀO TRONG GIỎ HÀNG -->
+				<div class="col no-product">
+					<div class="d-flex justify-content-center">
+						<h3>Bạn chưa chọn sản phẩm nào!!</h3>
+						<a href="index.php" class="btn btn-danger ml-5 mb-lg-5">Tiếp tục mua sắm</a>
+					</div>
 				</div>
 				
 

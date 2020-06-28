@@ -1,5 +1,10 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['User_Name'])){
+		header("Location: index.php");
+		die();
+	}else{
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +25,7 @@
 		
 		<!-- END-NAV -->
 
-		
+		<!-- LƯU THÔNG TIN KHÁCH HÀNG - SẢN PHẨM ĐÃ MUA -- HÓA ĐƠN --NHÂN VIÊN PHỤ TRÁCH  -->
 		<div style="margin-top: 90px">
             <?php 
             	include 'Resoures/php/connect.php';	
@@ -35,7 +40,7 @@
 					$sql_check_user ="SELECT `MSKH`FROM `khachhang` WHERE `MSKH`='$id_customer'";
 
 					if(mysqli_num_rows(mysqli_query($connect,$sql_check_user)) > 0){
-						//update customer one more time
+						//update customer one more time 
 						$sql_update_customer ="UPDATE `khachhang` SET `HoTenKH`='$name_customer',`DiaChi`='$address_customer',`SDT`='$phone_customer' WHERE `MSKH`='$id_customer'";
 						mysqli_query($connect,$sql_update_customer);
 					}else{
@@ -68,7 +73,10 @@
 				
 					
 				?>	
+				<div class="col no-product">
 					<h3 class="text-center">Cảm ơn quý khách đã mua hàng từ Canvas! Mã đơn hàng của bạn:<span style="color:#e10c00"><?php echo $id_order?></span></h3>
+				</div>
+					
 	                    
             <?php
                 }
@@ -88,3 +96,6 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php
+}
+?>

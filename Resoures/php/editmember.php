@@ -1,6 +1,7 @@
 <?php session_start();
 	if(!isset($_SESSION["admin"])){
-		header("Location: /../../../../Do_an_web/index.php");
+        header("Location: /../../../../Do_an_web/index.php");
+        die();
 	}else{
 		?>
 <!DOCTYPE html>

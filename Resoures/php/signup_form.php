@@ -48,10 +48,10 @@
 
 	<div class="signup-form">
 		<div class="row">
-			<div class="col-6 d-flex  justify-content-around flex-column ">
-				<a href="../../../Do_an_web/index.php"><img src="../img/logo_2.png" class="w-50"></a>
+			<div class="col-sm-12 col-md-6  d-flex  justify-content-around flex-column ">
+				<a href="../../../Do_an_web/index.php"><img src="../img/logo_2.png" class="w-50 text-center"></a>
 			</div>
-			<div class="col-6">
+			<div class="col-sm-12 col-md-6">
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" onsubmit="return validForm()">
 					<h2 class="text-uppercase font-weight-bold">Create Account</h2>
 					<div class="form-group">
