@@ -21,13 +21,6 @@
 				<?php include 'admin_nav.php';?>
 			</div>
 			<div class="col-md-10">
-				<?php if(isset($_GET['message'])){
-					?>
-					<div class="alert alert-danger alert-dismissible">
-						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<strong><?php echo $_GET['message'];?></strong>
-					</div>
-				<?php } ?>
 				<hr><h3 class="text-center font-weight-bold">Thêm Nhân Viên</h3><hr>
 				<form method="post">
 					<div class="row">
