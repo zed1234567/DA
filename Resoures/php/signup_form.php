@@ -1,8 +1,7 @@
 <?php
 	session_start();
 	if(isset($_SESSION['User_Name'])){
-		header("Location: /../../../../Do_an_web/index.php");
-		die();
+		echo '<script type="text/javascript">window.history.back();</script>';
 	}else{
 
 ?>
@@ -13,6 +12,7 @@
 	<title>Sign up</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/stylesSignup.css">
+	<link rel="stylesheet" href="../fontawesome/css/all.css">
 </head>
 <body>
 	<?php
@@ -33,8 +33,10 @@
 			$sql_update ="INSERT INTO `users`(`User_Name`, `Gmail`, `pwd`) 
 						  VALUES ('$username','$gmail','$hash_pwd')";
 			if(mysqli_query($connect,$sql_update)){
-				header("Location: ../../../../../Do_an_web/index.php?message=Success+please+login");
-				die();
+				echo '<script type="text/javascript">
+							alert("Thành Công! Vui lòng đăng nhập lại.")
+							window.location.assign("http://localhost/Do_an_web/index.php");
+					  </script>';
 			}
 			mysqli_free_result($sql_update);
 
@@ -129,7 +131,6 @@
 		}
 		
 	</script>
-	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>

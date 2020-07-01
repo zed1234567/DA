@@ -1,7 +1,6 @@
 <?php session_start();
 	if(!isset($_SESSION["admin"])){
-		header("Location: /../../../../Do_an_web/index.php");
-		die();
+		echo '<script type="text/javascript">window.history.back();</script>';
 	}else{
 		include 'connect.php';
 		?>
@@ -12,6 +11,7 @@
 	<title>Add Product</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style_admin.css">
+	<link rel="stylesheet" href="../fontawesome/css/all.css">
 </head>
 </head>
 <body>

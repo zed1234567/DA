@@ -1,7 +1,6 @@
 <?php session_start();
 	if(!isset($_SESSION["admin"])){
-		header("Location: /../../../../Do_an_web/index.php");
-		die();
+		echo '<script type="text/javascript">window.history.back();</script>';
 	}else{
 		?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style_admin.css">
-	
+	<link rel="stylesheet"  href="../fontawesome/css/all.css">
 </head>
 <body>
 	<div class="container-fluid">

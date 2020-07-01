@@ -13,13 +13,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="Resoures/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
+	<link rel="stylesheet" href="Resoures/fontawesome/css/all.css">
 </head>
 <body>
 	<div class="container-fluid">
 
  	<?php include "nav_index.php";?> 
 
-		<div style="margin-top: 150px;">
+		<div style="margin: 150px;">
 			<?php
 				if (!empty($_SESSION['shopping_cart'])) {
 				?>
@@ -163,7 +164,7 @@
 				<div class="col no-product">
 					<div class="d-flex justify-content-center">
 						<h3>Bạn chưa chọn sản phẩm nào!!</h3>
-						<a href="index.php" class="btn btn-danger ml-5 mb-lg-5">Tiếp tục mua sắm</a>
+						<a href="index.php" class="btn btn-success ml-5 mb-lg-5">Tiếp tục mua sắm</a>
 					</div>
 				</div>
 				
@@ -243,7 +244,6 @@
 			}
 		}
 	</script>
-	<script src="https://kit.fontawesome.com/3a6503522a.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

@@ -1,15 +1,23 @@
 /*----SideBar----*/
+.wrapper{
+	display: flex;
+	width: 100%;
+}
+
 #sidebar{
 	min-width: 250px;
 	max-width: 250px;
-	min-height: 100vh;
 	background: #7386D5;
 	color: #fff;
+	top: 0;
+	z-index: 100;
+	left: 0;
 	transition: all 0.5s;
 	position: fixed;
+	height: 100vh;
 }
 #sidebar .sidebar-header{
-	background: #6d7fcc;
+	background: #7386D5;
 	padding: 20px;
 }
 #sidebar .sidebar-header img{

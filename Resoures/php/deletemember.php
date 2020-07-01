@@ -1,8 +1,7 @@
 <?php
 	session_start();
 	if($_SESSION['admin']!=1 && !isset($_SESSION['admin'])){
-		header("Location: /../../../../Do_an_web/index.php");
-		die();
+		echo '<script type="text/javascript">window.history.back();</script>';
 	}
 
 	include 'connect.php';

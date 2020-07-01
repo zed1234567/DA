@@ -5,7 +5,8 @@
 				
 				<form class="form-inline mr-auto" action="search.php" method="post">
 					<div class="input-group">
-						<input type="text" class="form-control shadow-none" name="input_search" placeholder="Search something..." required autocomplete="off" size="25">
+						<input type="text" class="form-control shadow-none" name="input_search"
+						pattern="^[a-zA-Z ]*$" title="Nhập số hoặc ký tự" placeholder="Search something..." required autocomplete="off" size="25">
 						<div class="input-group-append">
 							<button type="submit" name="search" class="btn btn-success"><i class="fas fa-search"></i></button>
 						</div>
@@ -40,7 +41,7 @@
 							<a href="#" class="nav-link text-center"><i class="fas fa-bell"></i></a>
 						</li>
 						<li class="nav-item">
-							<a href="phone.php" class="nav-link text-center">PHONE</a>
+							<a href="phone.php" id="phone" class="nav-link text-center">PHONE</a>
 						</li>
 						<li class="nav-item">
 							<a href="laptop.php" class="nav-link text-center">LAPTOP</a>
@@ -117,3 +118,11 @@
 			</nav>
 	
 </header>
+<script type="text/javascript">
+	var currentPage = document.getElementsByClassName('nav-link');
+	for(var i=0 ; i<= currentPage.length; i++){
+		if(currentPage[i].href === window.location.href){
+			currentPage[i].classList.add('active');
+		}
+	}
+</script>

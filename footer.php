@@ -1,5 +1,5 @@
 
-<div class="row bg-dark d-flex justify-content-center align-content-center ">
+<div class="row bg-dark d-flex justify-content-center align-items-center">
 
 	<div class="col-md-3 col-sm-12 d-flex justify-content-center align-content-center">
 		<img src="Resoures/img/logo_2.png"  class="w-100 p-0 img-footer">
