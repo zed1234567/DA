@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="Resoures/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Resoures/css/stylesIndex.css">
 	<link rel="stylesheet" href="Resoures/fontawesome/css/all.css">
+	<style>
+		html{
+			scroll-behavior: smooth;
+		}
+	</style>
 </head>
 <body>
 	
